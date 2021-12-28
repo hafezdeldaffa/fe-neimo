@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  font-size: 20;
+  font-weight: bold;
+}
+
+@media (min-width: 992px) {
+  .rounded-lg-3 {
+    border-radius: 0.3rem;
+  }
+}
+
+#btn-lp1 {
+  background-color: #2647bd;
+  color: white;
+}
+
+#btn-lp1:hover {
+  background-color: #1c358c;
+  color: white;
+}
+
+.lead {
+  font-family: 'Roboto';
+}
+
+
+.serviceInfo-bg {
+  min-height: 300px;
+  width: 100%;
+  background: #2647bd;
+  padding: 4rem 0rem;
+}
+
+
+.serviceInfo-h4 {
+  font-family: 'Poppins';
+  font-weight: bold;
+  color: white;
+}
+
+.serviceInfo-btn {
+  background-color: #38A3A5 !important;
+  color: white !important;
+  border-radius: 15px !important;
+}
+
+.symptom-p {
+  text-align: justify;
+}
+
+.bg-table {
+  background: #2647bd;
+}
+
+.search-box{
+  padding: 0.3em;
+  border-style: solid;
+  border-color: #38A3A5;
+  border-radius: 30px;
+}
+.search-input {
+  border-width:0px;
+  border:none;
+  border-width:0px;
+  border:none;
+  outline: none;
+  width: 60%;
+}
+
+.btn-icon{
+  width: 30px;
+}
+
+.sort-img{
+  width:40px;
+}
+
+.btn-sort{
+  background-color: #F16133 !important;
+  color: white !important;
+  border-radius: 15px !important;
+}
+
+.bg-search-card {
+  background: #2647bd !important;
+}
+
+.text-coral{
+  color: coral !important;
+}
+
+.btn-masuk{
+  background: white;
+  border-radius: 50px;
+  color: #2647bd;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 500px;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }
+
+
+  .theader{
+    position:sticky;
+    top: 0 ;
+}
+
+
+.IndonesiaCases-bg {
+  min-height: 300px;
+  width: 100%;
+  background: #2647bd;
+  padding: 4rem 0rem;
+}
+
+.bg-positif{
+  background: #E8C926 !important;
+}
+
+.bg-negative{
+  background: orange !important;
+}
+
+.bg-recovered{
+  background: #38A3A5 !important;
+}
+
+.bg-vacinated{
+  background: #D57CFF !important;
+}

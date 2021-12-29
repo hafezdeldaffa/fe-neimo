@@ -37,14 +37,31 @@ const Login = () => {
                   id='exampleInputPassword1'
                 />
               </div>
-              <div className='mb-3 form-check'>
+              <div className='mb-2'>
+                <label className='form-check-label'>Pilih Role Anda :</label>
+              </div>
+              <div className='form-check form-check-inline mb-4'>
                 <input
-                  type='checkbox'
                   className='form-check-input'
-                  id='exampleCheck1'
+                  type='radio'
+                  name='rt'
+                  id='inlineRadio1'
+                  value='RT'
                 />
-                <label className='form-check-label' for='exampleCheck1'>
-                  Check me out
+                <label className='form-check-label' for='inlineRadio1'>
+                  RT
+                </label>
+              </div>
+              <div className='form-check form-check-inline mb-4'>
+                <input
+                  className='form-check-input'
+                  type='radio'
+                  name='keluarga'
+                  id='inlineRadio2'
+                  value='Keluarga'
+                />
+                <label className='form-check-label' for='inlineRadio2'>
+                  Keluarga
                 </label>
               </div>
               <button

@@ -38,7 +38,9 @@ const Login = () => {
                 />
               </div>
               <div className='mb-2'>
-                <label className='form-check-label'>Pilih Role Anda :</label>
+                <label className='form-check-label fw-bold display-7'>
+                  Pilih Role Anda :
+                </label>
               </div>
               <div className='form-check form-check-inline mb-4'>
                 <input

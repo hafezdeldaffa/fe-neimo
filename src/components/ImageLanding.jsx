@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const ImageLanding = () => {
   return (
     <div className='container col-xxl-8 px-4 py-sm min-vh-100'>
@@ -17,13 +19,15 @@ const ImageLanding = () => {
             Neimo adalah aplikasi pemantauan keadaan COVID-19 di keluarga Anda.
           </p>
           <div className='d-grid gap-2 d-md-flex justify-content-md-start'>
-            <button
-              type='button'
-              id='btn-lp1'
-              className='btn btn-lg px-4 me-md-2'
-            >
-              Daftar Sekarang
-            </button>
+            <Link to={'/signup'}>
+              <button
+                type='button'
+                id='btn-lp1'
+                className='btn btn-lg px-4 me-md-2'
+              >
+                Daftar Sekarang
+              </button>
+            </Link>
           </div>
         </div>
       </div>

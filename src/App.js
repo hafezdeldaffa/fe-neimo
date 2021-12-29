@@ -12,6 +12,7 @@ import { IndonesiaDailyContextProvider } from './context/IndonesiaDailyContext';
 import { CountriesContextProvider } from './context/CountriesContext';
 import { GlobalContextProvider } from './context/GlobalContext';
 import Login from './container/Login';
+import Signup from './container/Signup';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
                       path='/indonesia'
                       element={<IndonesiaData />}
                     ></Route>
-                    <Route path='/global' element={<GlobalData />}></Route>
+                    <Route path='/signup' element={<Signup />}></Route>
                     <Route path='/login' element={<Login />}></Route>
                     <Route path='*' element={<LandingPage />}></Route>
                   </Routes>

@@ -1,7 +1,14 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
 
 const Signup = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <React.Fragment>
       <Navbar />
@@ -17,7 +24,7 @@ const Signup = () => {
             </p>
           </div>
           <div className='col-lg-6 py-4'>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-3'>
                 <input
                   placeholder='Nama Lengkap Kepala Keluarga'
@@ -25,6 +32,7 @@ const Signup = () => {
                   className='form-control'
                   id='exampleText1'
                   name='namaKepalaKeluarga'
+                  {...register('namaKepalaKeluarga', { required: true })}
                 />
               </div>
               <div className='mb-3'>
@@ -35,6 +43,7 @@ const Signup = () => {
                   id='exampleInputEmail1'
                   aria-describedby='emailHelp'
                   name='email'
+                  {...register('email', { required: true })}
                 />
               </div>
               <div className='mb-3'>
@@ -43,6 +52,7 @@ const Signup = () => {
                   type='text'
                   name='provinsi'
                   className='form-control'
+                  {...register('provinsi', { required: true })}
                 />
               </div>
               <div className='col-lg-12'>
@@ -53,6 +63,7 @@ const Signup = () => {
                       type='number'
                       name='rt'
                       className='form-control'
+                      {...register('rt', { required: true })}
                     />
                   </div>
                   <div className='col mb-3'>
@@ -61,6 +72,7 @@ const Signup = () => {
                       type='number'
                       name='rw'
                       className='form-control'
+                      {...register('rw', { required: true })}
                     />
                   </div>
                   <div className='col-4 mb-3'>
@@ -69,6 +81,7 @@ const Signup = () => {
                       type='number'
                       name='kodePos'
                       className='form-control'
+                      {...register('kodePos', { required: true })}
                     />
                   </div>
                   <div className='col-4 mb-3'>
@@ -77,6 +90,7 @@ const Signup = () => {
                       type='number'
                       name='nomorRumah'
                       className='form-control'
+                      {...register('nomorRumah', { required: true })}
                     />
                   </div>
                 </div>
@@ -87,6 +101,7 @@ const Signup = () => {
                   type='text'
                   name='alamat'
                   className='form-control'
+                  {...register('alamat', { required: true })}
                 />
               </div>
               <div className='mb-3'>
@@ -95,55 +110,38 @@ const Signup = () => {
                   type='number'
                   name='tokenRT'
                   className='form-control'
+                  {...register('tokenRT', { required: true })}
                 />
               </div>
-              <div className='col-md-8'>
-                <div className='row'>
-                  <div className='col'>
-                    <h6>Pilih Role Anda: </h6>
-                  </div>
-                  <div className='col-3 form-check form-check-inline mb-3 px-10'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='role'
-                      id='inlineRadio1'
-                      value='RT'
-                    />
-                    <label className='form-check-label' for='inlineRadio1'>
-                      RT
-                    </label>
-                  </div>
-                  <div className='col-3 form-check form-check-inline mb-3 px-10'>
-                    <input
-                      className='form-check-input'
-                      type='radio'
-                      name='role'
-                      id='inlineRadio2'
-                      value='Keluarga'
-                    />
-                    <label className='form-check-label' for='inlineRadio2'>
-                      Keluarga
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className='mb-3'>
+              <select
+                className='form-select mb-3'
+                aria-label='Default select example'
+                placeholder='Role Anda'
+                {...register('role', { required: true })}
+              >
+                <option selected='true' value='Keluarga'>
+                  Role : Keluarga
+                </option>
+                <option value='RT'>Role : RT</option>
+              </select>
+              <div className='input-group mb-3'>
                 <input
                   placeholder='Password'
                   type='password'
                   className='form-control'
                   name='password'
                   id='exampleInputPassword1'
+                  {...register('password', { required: true })}
                 />
               </div>
-              <div className='mb-3'>
+              <div className='input-group mb-3'>
                 <input
                   placeholder='Konfirmasi Password'
                   type='password'
                   className='form-control'
-                  name='confirmPassword'
+                  name='password'
                   id='exampleInputPassword1'
+                  {...register('password')}
                 />
               </div>
               <button

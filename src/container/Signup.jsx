@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
@@ -5,8 +6,12 @@ import Navbar from '../components/Navbar';
 const Signup = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const signup = await axios.post(
+      'https://neimo-be.herokuapp.com/auth/signup',
+      data
+    );
+    console.log(signup);
   };
 
   return (
@@ -104,15 +109,6 @@ const Signup = () => {
                   {...register('alamat', { required: true })}
                 />
               </div>
-              <div className='mb-3'>
-                <input
-                  placeholder='Token RT'
-                  type='number'
-                  name='tokenRT'
-                  className='form-control'
-                  {...register('tokenRT', { required: true })}
-                />
-              </div>
               <select
                 className='form-select mb-3'
                 aria-label='Default select example'
@@ -122,8 +118,19 @@ const Signup = () => {
                 <option selected='true' value='Keluarga'>
                   Role : Keluarga
                 </option>
+
                 <option value='RT'>Role : RT</option>
               </select>
+              <div className='mb-3'>
+                <input
+                  placeholder='Token RT'
+                  type='text'
+                  name='tokenRT'
+                  className='form-control'
+                  {...register('tokenRT')}
+                />
+              </div>
+
               <div className='input-group mb-3'>
                 <input
                   placeholder='Password'
@@ -141,7 +148,7 @@ const Signup = () => {
                   className='form-control'
                   name='password'
                   id='exampleInputPassword1'
-                  {...register('password')}
+                  {...register('password', { required: true })}
                 />
               </div>
               <button

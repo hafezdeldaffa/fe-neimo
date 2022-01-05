@@ -11,7 +11,7 @@ const BusinessProcess = () => {
               membagikan data terkait COVID-19, seperti vaksinasi serta
               kesehatan dari keluarga mereka
             </p>
-            <button type='button' class='btn btn-outline-dark px-5'>
+            <button type='button' className='btn btn-outline-dark px-5'>
               Pelajari
             </button>
           </div>

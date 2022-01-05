@@ -1,19 +1,36 @@
-import routes from '../routes';
+import { useContext } from 'react';
+import * as FaIcons from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import { SidebarContext } from '../context/SidebarContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const [sidebar, setSidebar] = useContext(SidebarContext);
 
+  const showSidebar = () => setSidebar(!sidebar);
   return (
     <nav
       className='navbar navbar-expand-lg navbar-dark sticky-top'
       style={{ backgroundColor: '#2647bd' }}
     >
       <div className='container-fluid'>
+        {
+          location.pathname === "/" ?
+            null :
+            <>
+              <div className=' mt-1'>
+                <Link to='#' className='menu-bars'>
+                  <FaIcons.FaBars onClick={showSidebar} style={{color: 'white'}} />
+                </Link>
+              </div>
+            </>
+        }
         <Link className='navbar-brand' to='/'>
           Neimo
         </Link>
-        <button
+        {
+          location.pathname=== "/" ? 
+          <button
           className='navbar-toggler'
           type='button'
           data-bs-toggle='collapse'
@@ -23,7 +40,9 @@ const Navbar = () => {
           aria-label='Toggle navigation'
         >
           <span className='navbar-toggler-icon'></span>
-        </button>
+        </button> 
+          : null 
+          }
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             {/* {routes.map((r, id) => (
@@ -40,9 +59,15 @@ const Navbar = () => {
             ))} */}
           </ul>
         </div>
-        <Link className='nav-link btn-masuk px-4 fw-normal' to={'/login'}>
-          Masuk
-        </Link>
+        {
+          location.pathname === "/" ?
+            <Link className='nav-link btn-masuk px-4 fw-normal' to={'/login'}> Masuk </Link> :
+            <>
+              <p className='text-white mt-3 me-3 d-md-block d-none'>Keluarga</p>
+              <img src="/images/Avatar.png" alt="" style={{ width: '50px' }} />
+            </>
+        }
+
       </div>
     </nav>
   );

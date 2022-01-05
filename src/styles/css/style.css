@@ -103,7 +103,7 @@
 
 .my-custom-scrollbar {
   position: relative;
-  height: 500px;
+  maxHeight: 500px;
   overflow: auto;
   }
   .table-wrapper-scroll-y {
@@ -138,4 +138,19 @@
 
 .bg-vacinated{
   background: #D57CFF !important;
+}
+
+.bg-grey{
+  background: #545454 !important;
+}
+
+.addAnggota-btn {
+  background-color: #38A3A5 !important;
+  color: white !important;
+  border-radius: 15px !important;
+}
+
+.addAnggota2-btn {
+  background-color: #38A3A5 !important;
+  color: white !important;
 }

@@ -3,10 +3,6 @@ import { SidebarContext } from '../context/SidebarContext';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import DataKeluargaButtons from '../components/DataKeluargaButtons';
-import DataKeluargaTable from '../components/DataKeluargaTable';
-import TableStatusCovidKeluarga from '../components/TableStatusCovidKeluarga';
-import TableStatusVaksinKeluarga from '../components/TableStatusVaksinKeluarga';
-
 const DataKeluarga = () => {
   const [sidebar] = useContext(SidebarContext);
   return (

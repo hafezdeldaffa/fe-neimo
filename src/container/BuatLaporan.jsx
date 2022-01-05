@@ -16,7 +16,7 @@ const BuatLaporan  = () => {
           <div className='container'>
             <div className='row mt-4'>
               <div className='col-2 col-md-1'>
-                <img src="/images/report_icon.png" alt="" className="ms-4" style={{ width: '40px' }} />
+                <img src="/images/report_icon.png" alt="" className="ms-4" style={{ width: '35px' }} />
               </div>
               <div className='col-10 col-md-11'>
                 <h2 className='ms-3 ms-md-0'>Tambah Laporan Covid-19</h2>

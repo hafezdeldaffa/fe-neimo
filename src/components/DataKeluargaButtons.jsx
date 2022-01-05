@@ -6,7 +6,6 @@ import TableStatusVaksinKeluarga from "./TableStatusVaksinKeluarga";
 
 const DataKeluargaButtons = () => {
     const [button, setButton] = useState('button1')
-    console.log(button)
     return (
         <React.Fragment>
             <div className="container mt-4">

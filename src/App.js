@@ -4,21 +4,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from './container/LandingPage';
 import './styles/css/style.css';
 import IndonesiaData from './container/IndonesiaData';
-<<<<<<< HEAD
 import Dashoard from './container/Dashboard';
 import DataKeluarga from './container/DataKeluarga';
-=======
->>>>>>> 59efbd67dd2ba64dd96f7738f1a70b86428a5048
 
 import { IndoContextProvider } from './context/IndonesiaContext';
 import { ProvinceContextProvider } from './context/ProvinceContext';
 import { IndonesiaDailyContextProvider } from './context/IndonesiaDailyContext';
 import { CountriesContextProvider } from './context/CountriesContext';
-<<<<<<< HEAD
 import { GlobalContextProvider } from './context/GlobalContext';
 import { SidebarContextProvider } from './context/SidebarContext';
-=======
->>>>>>> 59efbd67dd2ba64dd96f7738f1a70b86428a5048
+
 import Login from './container/Login';
 import Signup from './container/Signup';
 import DataPositif from './container/DataPositif';

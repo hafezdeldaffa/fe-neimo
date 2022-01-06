@@ -1,16 +1,11 @@
-import React,{useState} from "react";
 import { Modal } from 'react-bootstrap'
-const FormTambahAnggota = () => {
-    const [show, setShow] = useState(false);
+const FormEditAnggota = (props) => {
+
     return (
         <>
-            <button type="button" className="btn addAnggota-btn" style={{ width: '130px' }} onClick={() => setShow(true)}>
-                Tambah Data
-            </button>
-
-            <Modal show={show} onHide={() => setShow(false)} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal show={props.show} onHide={props.onHide} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Tambah Anggota Keluarga</Modal.Title>
+                    <Modal.Title>Edit Anggota Keluarga</Modal.Title>
                 </Modal.Header>
                 <form>
                     <Modal.Body>
@@ -92,12 +87,12 @@ const FormTambahAnggota = () => {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button type="button" className="btn addAnggota2-btn" style={{ width: '100%' }}>Tambah Data</button>
+                        <button type="button" className="btn addAnggota2-btn" style={{ width: '100%' }}>Edit Data</button>
                     </Modal.Footer>
                 </form>
             </Modal>
         </>
-    )
+    );
 }
 
-export default FormTambahAnggota;
+export default FormEditAnggota

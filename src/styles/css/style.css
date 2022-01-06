@@ -154,3 +154,12 @@
   background-color: #38A3A5 !important;
   color: white !important;
 }
+
+.btn-delete{
+  background-color: #F16133 !important;
+  color: white !important;
+}
+
+.btn-delete:hover{
+  background-color: #D4471A !important;
+}

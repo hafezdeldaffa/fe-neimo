@@ -1,7 +1,24 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const Login = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      const login = await axios.post(
+        'https://neimo-be.herokuapp.com/auth/login',
+        data
+      );
+      localStorage.setItem('token', login.data.token);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <React.Fragment>
       <Navbar />
@@ -19,7 +36,7 @@ const Login = () => {
             <h6 className='display-6 fw-bold lh-1 mb-4'>
               Login Untuk Melanjutkan
             </h6>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-3'>
                 <input
                   placeholder='Email'
@@ -27,6 +44,7 @@ const Login = () => {
                   className='form-control'
                   id='exampleInputEmail1'
                   aria-describedby='emailHelp'
+                  {...register('email', { required: true })}
                 />
               </div>
               <div className='mb-3'>
@@ -35,37 +53,20 @@ const Login = () => {
                   type='password'
                   className='form-control'
                   id='exampleInputPassword1'
+                  {...register('password', { required: true })}
                 />
               </div>
-              <div className='mb-2'>
-                <label className='form-check-label fw-bold display-7'>
-                  Pilih Role Anda :
-                </label>
-              </div>
-              <div className='form-check form-check-inline mb-4'>
-                <input
-                  className='form-check-input'
-                  type='radio'
-                  name='rt'
-                  id='inlineRadio1'
-                  value='RT'
-                />
-                <label className='form-check-label' for='inlineRadio1'>
-                  RT
-                </label>
-              </div>
-              <div className='form-check form-check-inline mb-4'>
-                <input
-                  className='form-check-input'
-                  type='radio'
-                  name='keluarga'
-                  id='inlineRadio2'
-                  value='Keluarga'
-                />
-                <label className='form-check-label' for='inlineRadio2'>
-                  Keluarga
-                </label>
-              </div>
+              <select
+                className='form-select mb-3'
+                aria-label='Default select example'
+                placeholder='Role Anda'
+                {...register('role', { required: true })}
+              >
+                <option selected='true' value='Keluarga'>
+                  Role : Keluarga
+                </option>
+                <option value='RT'>Role : RT</option>
+              </select>
               <button
                 type='submit'
                 className='btn btn-primary'

@@ -14,16 +14,16 @@ const ImageLanding = () => {
           />
         </div>
         <div className='col-lg-6'>
-          <h1 className='display-5 fw-bold lh-1 mb-3'>Pantau Virus Covid-19</h1>
+          <h1 className='display-5 fw-bold lh-1 mb-3'>Pantau Covid di Sekitar RT-mu!</h1>
           <p className='lead'>
-            Neimo adalah aplikasi pemantauan keadaan COVID-19 di keluarga Anda.
+            Neimo adalah aplikasi pemantauan keadaan COVID-19 di lingkungan dan keluarga Anda.
           </p>
           <div className='d-grid gap-2 d-md-flex justify-content-md-start'>
             <Link to={'/signup'}>
               <button
                 type='button'
                 id='btn-lp1'
-                className='btn btn-lg px-4 me-md-2'
+                className='btn btn-lg px-4 me-md-2 shadow-lg'
               >
                 Daftar Sekarang
               </button>

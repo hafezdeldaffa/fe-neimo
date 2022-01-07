@@ -11,13 +11,13 @@ const DataKeluargaTable = () => {
         <div className="container">
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
                 <div className="table-responsive">
-                    <table className="table table-borderless table-hover shadow">
+                    <table className="table table-borderless table-hover shadow text-center">
                         <thead className="bg-table text-white">
                             <tr>
                                 <th scope="col" className=" d-none d-sm-block">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">aksi</th>
+                                <th scope="col">Edit / Hapus</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,9 +39,9 @@ const DataKeluargaTable = () => {
                                 <td>Agus</td>
                                 <td>Kepala Keluarga</td>
                                 <td>
-                                    <FaIcons.FaEdit style={{color : '2647bd'}} onClick={() => setShow(true)}></FaIcons.FaEdit> Edit
+                                    <FaIcons.FaEdit style={{color : '2647bd'}} onClick={() => setShow(true)}></FaIcons.FaEdit>
                                     /
-                                    <AiIcons.AiOutlineDelete style={{color : '2647bd'}} onClick={() => setShowDelete(true)}></AiIcons.AiOutlineDelete> Hapus</td>
+                                    <AiIcons.AiOutlineDelete style={{color : '2647bd'}} onClick={() => setShowDelete(true)}></AiIcons.AiOutlineDelete></td>
                             </tr>
                         </tbody>
                     </table>

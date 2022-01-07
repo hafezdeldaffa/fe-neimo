@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -75,6 +76,12 @@ const Login = () => {
                 Masuk
               </button>
             </form>
+            <p className='text-center mt-3 text-secondary'>
+              Belum memiliki akun? 
+              <Link to={'/signup'} className='text-dark fw-bold text-decoration-none'>
+                 Daftar
+              </Link>
+            </p>
           </div>
         </div>
       </div>

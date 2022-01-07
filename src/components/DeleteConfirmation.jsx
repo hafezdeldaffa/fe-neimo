@@ -9,7 +9,7 @@ const DeleteConfirmation = (props) => {
                     </div>
                     <h3 className='text-center mt-4'>Apakah Anda Yakin ?</h3>
                     <div className='d-flex justify-content-center mt-4'>
-                    <button variant="secondary" onClick={props.onHide} className=' btn btn-dark mx-2'>
+                    <button variant="secondary" onClick={props.onHide} className=' btn addAnggota2-btn mx-2'>
                         Batalkan
                     </button>
                     <button   className='mx-2 btn btn-delete'>

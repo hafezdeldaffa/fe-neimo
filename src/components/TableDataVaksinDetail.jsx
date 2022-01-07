@@ -3,7 +3,7 @@ const TableDataVaksinDetail = () =>{
         <div className="container">
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
                 <div className="table-responsive">
-                    <table className="table table-borderless table-hover shadow">
+                    <table className="table table-borderless table-hover shadow text-center">
                         <thead className="bg-table text-white">
                             <tr>
                                 <th scope="col" className=" d-none d-sm-block">No</th>

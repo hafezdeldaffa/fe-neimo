@@ -15,10 +15,10 @@ const Navbar = () => {
     >
       <div className='container-fluid'>
         {
-          location.pathname === "/" ?
+          location.pathname === "/"  || location.pathname === "/login" || location.pathname === "/signup" ?
             null :
             <>
-              <div className=' mt-1'>
+              <div>
                 <Link to='#' className='menu-bars'>
                   <FaIcons.FaBars onClick={showSidebar} style={{color: 'white'}} />
                 </Link>
@@ -26,7 +26,7 @@ const Navbar = () => {
             </>
         }
         <Link className='navbar-brand' to='/'>
-          Neimo
+          NEIMO
         </Link>
         {
           location.pathname=== "/" ? 
@@ -60,7 +60,7 @@ const Navbar = () => {
           </ul>
         </div>
         {
-          location.pathname === "/" ?
+          location.pathname === "/"  || location.pathname === "/login" || location.pathname === "/signup"  ?
             <Link className='nav-link btn-masuk px-4 fw-normal' to={'/login'}> Masuk </Link> :
             <>
               <p className='text-white mt-3 me-3 d-md-block d-none'>Keluarga</p>

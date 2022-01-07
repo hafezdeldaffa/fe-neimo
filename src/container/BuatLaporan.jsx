@@ -3,6 +3,7 @@ import { SidebarContext } from '../context/SidebarContext';
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import TableTambahLaporan from "../components/TableTambahLaporan";
+import TableRiwayatLaporan from "../components/TableRiwayatLaporan";
 const BuatLaporan  = () => {
     const [sidebar] = useContext(SidebarContext);
     return(
@@ -26,6 +27,7 @@ const BuatLaporan  = () => {
                 <div className="container mt-4">
                   <h3>Riwayat Laporan</h3>
                 </div>
+                <TableRiwayatLaporan />
           </div>
         </div>
       </div>

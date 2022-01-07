@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Modal } from 'react-bootstrap'
 const FormTambahAnggota = () => {
     const [show, setShow] = useState(false);
@@ -24,7 +24,9 @@ const FormTambahAnggota = () => {
                                         <h5>Data Diri</h5>
                                     </div>
                                 </div>
+                                {/* INPUT NAMA */}
                                 <input type="text" className="form-control mt-2" id="name" aria-describedby="name" placeholder="Nama Lengkap" />
+                                {/* INPUT ROLE */}
                                 <select className="form-select mt-2" aria-label="Default select example">
                                     <option >--Pilih Role--</option>
                                     <option value="Kepala Keluarga">Kepala Keluarga</option>
@@ -43,48 +45,80 @@ const FormTambahAnggota = () => {
                                                 <img src="/images/vaksin_icon.png" alt="" style={{ width: '25px' }} />
                                             </div>
                                             <div className="col-11">
-                                                <h5>Data vaksin</h5>
+                                                <h5>Data Status Vaksin</h5>
                                             </div>
                                         </div>
-                                        <div className="form-check mt-2">
-                                            <input className="form-check-input" type="checkbox" value="dosis1" id="dosis1" />
-                                            <label className="form-check-label" htmlFor="dosis1">
-                                                Dosis 1
-                                            </label>
-                                            <input className="ms-2" type="date" />
+                                        <div className="row  mt-2">
+                                            <div className="col">
+                                                {/* INPUT DOSIS 1 */}
+                                                <select className="form-select" aria-label="Default select example" >
+                                                    <option >Jenis Vaksin</option>
+                                                    <option value="Belum Vaksin">Belum Vaksin</option>
+                                                    <option value="Sinovac">Sinovac</option>
+                                                    <option value="Astra Z">Astra Z</option>
+                                                    <option value="Moderna">Moderna</option>
+                                                    <option value="Lain-lain">Lain-lain</option>
+                                                </select>
+                                            </div>
+                                            <div className="col">
+                                                <input className="ms-2 d-flex flex-row-reverse justify-content-start mt-1" type="date" style={{ border: 'none' }} />
+                                            </div>
                                         </div>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" value="dosis2" id="dosis2" />
-                                            <label className="form-check-label" htmlFor="dosis2">
-                                                Dosis 2
-                                            </label>
-                                            <input className="ms-2" type="date" />
+                                        <div className="row  mt-2">
+                                            <div className="col">
+                                                {/* INPUT DOSIS 1 */}
+                                                <select className="form-select" aria-label="Default select example" >
+                                                    <option >Jenis Vaksin</option>
+                                                    <option value="Belum Vaksin">Belum Vaksin</option>
+                                                    <option value="Sinovac">Sinovac</option>
+                                                    <option value="Astra Z">Astra Z</option>
+                                                    <option value="Moderna">Moderna</option>
+                                                    <option value="Lain-lain">Lain-lain</option>
+                                                </select>
+                                            </div>
+                                            <div className="col">
+                                                <input className="ms-2 d-flex flex-row-reverse justify-content-start mt-1" type="date" style={{ border: 'none' }} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col">
-                                <div className="card shadow border-0 rounded-3">
+                                <div className="card shadow border-0 rounded-3  pb-3 mt-md-0 mt-2">
                                     <div className="card-body">
                                         <div className="row">
                                             <div className="col-1">
                                                 <img src="/images/notification.png" alt="" style={{ width: '25px' }} />
                                             </div>
                                             <div className="col-11">
-                                                <h5>Data Positif</h5>
+                                                <h5>Data Status Covid</h5>
                                             </div>
                                         </div>
-                                        <div className="form-check mt-2">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="positif" />
-                                            <label className="form-check-label" htmlFor="positif">
-                                                Positif
-                                            </label>
+                                        <div className="row mt-3">
+                                            <div className="col">
+                                                <div className="form-check ">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="positif" />
+                                                    <label className="form-check-label" htmlFor="positif">
+                                                        Positif
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div className="col">
+                                                <input className="ms-2 d-flex flex-row-reverse justify-content-start" type="date" style={{ border: 'none' }} />
+                                            </div>
                                         </div>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="negatif" />
-                                            <label className="form-check-label" htmlFor="negatif">
-                                                Negatif
-                                            </label>
+                                        <div className="row mt-2">
+                                            <div className="col">
+                                                <div className="form-check ">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="positif" />
+                                                    <label className="form-check-label" htmlFor="positif">
+                                                        Negatif
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div className="col">
+                                                <input className="ms-2 d-flex flex-row-reverse justify-content-start" type="date" style={{ border: 'none' }} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

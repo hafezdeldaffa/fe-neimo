@@ -13,7 +13,9 @@ const Login = () => {
         'https://neimo-be.herokuapp.com/auth/login',
         data
       );
+      console.log(login);
       localStorage.setItem('token', login.data.token);
+      window.location.href = '/dashboard';
     } catch (error) {
       throw error;
     }
@@ -36,7 +38,7 @@ const Login = () => {
             <h6 className='display-6 fw-bold lh-1 mb-4'>
               Login Untuk Melanjutkan
             </h6>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} method='post'>
               <div className='mb-3'>
                 <input
                   placeholder='Email'
@@ -53,6 +55,7 @@ const Login = () => {
                   type='password'
                   className='form-control'
                   id='exampleInputPassword1'
+                  autoComplete='on'
                   {...register('password', { required: true })}
                 />
               </div>
@@ -60,11 +63,10 @@ const Login = () => {
                 className='form-select mb-3'
                 aria-label='Default select example'
                 placeholder='Role Anda'
+                defaultValue={'Keluarga'}
                 {...register('role', { required: true })}
               >
-                <option selected='true' value='Keluarga'>
-                  Role : Keluarga
-                </option>
+                <option value='Keluarga'>Role : Keluarga</option>
                 <option value='RT'>Role : RT</option>
               </select>
               <button

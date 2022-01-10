@@ -5,8 +5,14 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import SortAndSearchPositifRT from "../components/SortAndSearchDataPositifRT";
 import TableDataVaksinDetail from "../components/TableDataVaksinDetail";
+import Login from "./Login";
 const DataVaksinDetail = () =>{
     const [sidebar] = useContext(SidebarContext);
+
+    const token = localStorage.getItem('token')
+    if(!token){
+        return <Login />
+    }
     return(
         <React.Fragment>
             <Navbar />

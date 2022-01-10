@@ -23,12 +23,13 @@ import DataVaksinDetail from './container/DataVaksinDetail';
 import BuatLaporan from './container/BuatLaporan';
 import DataLaporanRT from './container/DataLaporanRT';
 import DataLaporanRTDetail from './container/DataLaporanRTDetail';
+import { KeluargaContextProvider } from './context/DataKeluargaContext';
+import { VaksinKeluargaProvider } from './context/DataVaksinKeluaga';
 
 
 function App() {
   return (
     <React.Fragment>
-
       <BrowserRouter>
         <GlobalContextProvider>
           <IndoContextProvider>
@@ -36,6 +37,8 @@ function App() {
               <IndonesiaDailyContextProvider>
                 <CountriesContextProvider>
                   <SidebarContextProvider>
+                    <KeluargaContextProvider>
+                      <VaksinKeluargaProvider>
                     <Routes>
                       <Route exact path='/' element={<LandingPage />}></Route>
                       <Route path='/indonesia' element={<IndonesiaData />}></Route>
@@ -52,6 +55,8 @@ function App() {
                       <Route path='/buat-laporan' element={<BuatLaporan />} ></Route>
                       <Route path='*' element={<LandingPage />}></Route>
                     </Routes>
+                    </VaksinKeluargaProvider>
+                    </KeluargaContextProvider>
                   </SidebarContextProvider>
                 </CountriesContextProvider>
               </IndonesiaDailyContextProvider>

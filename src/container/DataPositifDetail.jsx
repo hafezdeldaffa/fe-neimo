@@ -1,12 +1,17 @@
 import React, { useContext } from "react"
 import { SidebarContext } from '../context/SidebarContext';
 import {Link} from "react-router-dom"
+import Login from "./Login";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import SortAndSearchPositifRT from "../components/SortAndSearchDataPositifRT";
 import TableDataPositifDetail from "../components/TableDataPositifDetail";
 const DataPositifDetail = () =>{
     const [sidebar] = useContext(SidebarContext);
+    const token = localStorage.getItem('token')
+    if(!token){
+        return <Login />
+    }
     return(
         <React.Fragment>
             <Navbar />

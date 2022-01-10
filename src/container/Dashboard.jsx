@@ -7,6 +7,7 @@ import CardCaseRT from '../components/CardCasesRT';
 
 const Dashoard = () => {
   const [sidebar] = useContext(SidebarContext);
+
   return (
     <React.Fragment>
       <Navbar />

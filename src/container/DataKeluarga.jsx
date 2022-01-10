@@ -3,8 +3,13 @@ import { SidebarContext } from '../context/SidebarContext';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import DataKeluargaButtons from '../components/DataKeluargaButtons';
+import Login from './Login';
 const DataKeluarga = () => {
   const [sidebar] = useContext(SidebarContext);
+  const token = localStorage.getItem('token')
+    if(!token){
+        return <Login />
+    }
   return (
     <React.Fragment>
       <Navbar />

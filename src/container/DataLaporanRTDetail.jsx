@@ -4,8 +4,14 @@ import {Link} from "react-router-dom"
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import TableLaporanWargaDetail from "../components/TableLaporanWargaDetail";
+import Login from "./Login";
 const DataLaporanRTDetail = () =>{
     const [sidebar] = useContext(SidebarContext);
+
+    const token = localStorage.getItem('token')
+    if(!token){
+        return <Login />
+    }
     return(
         <React.Fragment>
             <Navbar />

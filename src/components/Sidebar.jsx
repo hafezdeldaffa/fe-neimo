@@ -11,8 +11,8 @@ function Sidebar() {
   
   const location = useLocation();
   const [sidebar, setSidebar] = useContext(SidebarContext);
-
   const showSidebar = () => setSidebar(sidebar);
+
     return (
       <>
         <IconContext.Provider value={{ color: '#00000' }}>

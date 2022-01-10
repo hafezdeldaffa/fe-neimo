@@ -14,11 +14,13 @@ const Navbar = () => {
       style={{ backgroundColor: '#2647bd' }}
     >
       <div className='container-fluid'>
-        {location.pathname === '/' ? null : (
+        {location.pathname === '/' ||
+        location.pathname === '/login' ||
+        location.pathname === '/signup' ? null : (
           <>
-            <div className=' mt-1'>
-              <Link to='/' className='menu-bars'>
-                <FaIcons.FaLongArrowAltLeft
+            <div>
+              <Link to='#' className='menu-bars'>
+                <FaIcons.FaBars
                   onClick={showSidebar}
                   style={{ color: 'white' }}
                 />
@@ -27,7 +29,7 @@ const Navbar = () => {
           </>
         )}
         <Link className='navbar-brand' to='/'>
-          Neimo
+          NEIMO
         </Link>
         {location.pathname === '/' ? (
           <button
@@ -42,17 +44,34 @@ const Navbar = () => {
             <span className='navbar-toggler-icon'></span>
           </button>
         ) : null}
-        <div
-          className='collapse navbar-collapse'
-          id='navbarSupportedContent'
-        ></div>
-        {location.pathname === '/' ? (
+        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+          <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+            {/* {routes.map((r, id) => (
+              <li key={id} className='nav-item'>
+                <Link
+                  className={`nav-link text-capitalize ${
+                    location.pathname === r.path ? 'active' : ''
+                  }`}
+                  to={r.path}
+                >
+                  {r.name}
+                </Link>
+              </li>
+            ))} */}
+          </ul>
+        </div>
+        {location.pathname === '/' ||
+        location.pathname === '/login' ||
+        location.pathname === '/signup' ? (
           <Link className='nav-link btn-masuk px-4 fw-normal' to={'/login'}>
             {' '}
             Masuk{' '}
           </Link>
         ) : (
-          <></>
+          <>
+            <p className='text-white mt-3 me-3 d-md-block d-none'>Keluarga</p>
+            <img src='/images/Avatar.png' alt='' style={{ width: '50px' }} />
+          </>
         )}
       </div>
     </nav>

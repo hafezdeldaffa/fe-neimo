@@ -150,3 +150,12 @@
   background-color: #38a3a5 !important;
   color: white !important;
 }
+
+.btn-delete {
+  background-color: #f16133 !important;
+  color: white !important;
+}
+
+.btn-delete:hover {
+  background-color: #d4471a !important;
+}

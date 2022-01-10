@@ -7,7 +7,7 @@ const TableTambahLaporan  = () =>{
         <div className="container mt-5">
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
                 <div className="table-responsive">
-                    <table className="table table-borderless table-hover shadow">
+                    <table className="table table-borderless table-hover shadow text-center">
                         <thead className="bg-table text-white">
                             <tr>
                                 <th scope="col" className=" d-none d-sm-block">No</th>
@@ -35,22 +35,17 @@ const TableTambahLaporan  = () =>{
                                 <td>Agus</td>
                                 <td>Kepala Keluarga</td>
                                 <td>
-                                    <button onClick={ () => { setModalOpen(true)}}>
-                                    <GrIcons.GrAddCircle style={{color : '2647bd'}} ></GrIcons.GrAddCircle> Tambah Laporan
-                                    </button>
-                                    {modalOpen && <FormTambahLaporan setOpenModal={setModalOpen} />}
+                                    <GrIcons.GrAddCircle style={{color : '2647bd'}} onClick={ () => { setModalOpen(true)}}></GrIcons.GrAddCircle> Tambah Laporan
                                 </td>
-                            </tr>
-                            <tr className="border-1">
-                                <th scope="row" className=" d-none d-sm-block">2</th>
-                                <td>Ani</td>
-                                <td>Istri</td>
-                                <td> <GrIcons.GrAddCircle style={{color : '2647bd'}}></GrIcons.GrAddCircle> Tambah Laporan</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <FormTambahLaporan
+             show={modalOpen}
+             onHide={() => setModalOpen(false)}
+            />
         </div>
     )
 }

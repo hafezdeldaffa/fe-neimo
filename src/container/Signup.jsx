@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
+import {Link} from 'react-router-dom'
 
 const Signup = () => {
   const { register, handleSubmit } = useForm();
@@ -20,7 +21,7 @@ const Signup = () => {
       <div className='container col-xxl-8 px-4 py-sm min-vh-100'>
         <div className='row flex-lg-row align-items-center g-5 py-1'>
           <div className='col-10 col-sm-8 col-lg-6'>
-            <h1 className='display-3 fw-bold lh-1 mb-4 mt-3'>
+            <h1 className='display-3 fw-bold lh-1 mb-4'>
               Daftarkan Keluarga Anda!
             </h1>
             <p className='lh-2' style={{ fontSize: '20px' }}>
@@ -159,6 +160,12 @@ const Signup = () => {
                 Daftar
               </button>
             </form>
+            <p className='text-center mt-3 text-secondary'>
+              Sudah memiliki akun? 
+              <Link to={'/login'} className='text-dark fw-bold text-decoration-none'>
+                 Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { Link, Route } from 'react-router-dom';
+import Dashboard from './Dashboard';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -14,8 +16,19 @@ const Login = () => {
         data
       );
       console.log(login);
-      localStorage.setItem('token', login.data.token);
-      window.location.href = '/dashboard';
+      sessionStorage.setItem('token', login.data.token);
+      sessionStorage.setItem('role', data.role);
+
+      const role = localStorage.getItem('role');
+      const token = localStorage.getItem('token');
+
+      if (role.length && token.length) {
+        window.location.href = '/dashboard';
+      } else {
+        window.location.href = '/login';
+      }
+
+      console.log(role);
     } catch (error) {
       throw error;
     }
@@ -77,6 +90,15 @@ const Login = () => {
                 Masuk
               </button>
             </form>
+            <p className='text-center mt-3 text-secondary'>
+              Belum memiliki akun?
+              <Link
+                to={'/signup'}
+                className='text-dark fw-bold text-decoration-none'
+              >
+                Daftar
+              </Link>
+            </p>
           </div>
         </div>
       </div>

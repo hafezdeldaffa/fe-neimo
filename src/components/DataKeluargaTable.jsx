@@ -4,13 +4,27 @@ import * as AiIcons from 'react-icons/ai';
 import FormEditAnggota from './FormEditAnggota';
 import DeleteConfirmation from './DeleteConfirmation';
 import { KeluargaContext } from '../context/DataKeluargaContext';
+import axios from 'axios';
 const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [dataKeluarga] = useContext(KeluargaContext);
   const data = dataKeluarga.anggotaKeluarga;
 
-  const editHandler = async (setShow) => {};
+  const editHandler = async (setShow, id) => {
+    setShow(true);
+    const token = sessionStorage.getItem('token');
+
+    axios.interceptors.request.use((config) => {
+      config.headers.authorization = `Bearer ${token}`;
+      return config;
+    });
+
+    const dataEdit = await axios.get(
+      `https://neimo-be.herokuapp.com/anggota-keluarga/${id}`
+    );
+    console.log(dataEdit);
+  };
 
   if (data && data.length) {
     return (
@@ -40,7 +54,7 @@ const DataKeluargaTable = () => {
                       <td>
                         <FaIcons.FaEdit
                           style={{ color: '2647bd' }}
-                          onClick={() => setShow(true)}
+                          onClick={() => editHandler(setShow, element._id)}
                         ></FaIcons.FaEdit>
                         /
                         <AiIcons.AiOutlineDelete

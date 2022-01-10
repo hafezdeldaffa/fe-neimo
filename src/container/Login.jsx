@@ -19,8 +19,8 @@ const Login = () => {
       sessionStorage.setItem('token', login.data.token);
       sessionStorage.setItem('role', data.role);
 
-      const role = localStorage.getItem('role');
-      const token = localStorage.getItem('token');
+      const role = sessionStorage.getItem('role');
+      const token = sessionStorage.getItem('token');
 
       if (role.length && token.length) {
         window.location.href = '/dashboard';

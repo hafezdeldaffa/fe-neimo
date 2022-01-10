@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { KeluargaContext } from "../context/DataKeluargaContext";
+
 const CardCaseRT = () => {
+    // const [dataKeluarga] = useContext(KeluargaContext)
+    // console.log(dataKeluarga)
+    // const dataRT = dataKeluarga.anggotaRT
+    // // const jumlahWarga = dataRT.length
     return (
         <div className="container mt-3">
             <div className="row">
@@ -20,7 +27,7 @@ const CardCaseRT = () => {
                                     <p className="card-text" style={{ marginTop: '-20px' }}>20 Anak</p>
                                 </div>
                                 <div className="col">
-                                    <h1 className="text-end" style={{ fontSize: '70px', marginTop: '-20px' }}>36</h1>
+                                    <h1 className="text-end" style={{ fontSize: '70px', marginTop: '-20px' }}>5</h1>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +65,7 @@ const CardCaseRT = () => {
                                 <img src="/images/vaksin_icon.png" alt="" />
                                 </div>
                                 <div className="col-sm-10">
-                                <h5 className="text-start mt-2">Jumlah Terpapar Covid</h5>
+                                <h5 className="text-start mt-2">Jumlah Tervaksinasi</h5>
                                 </div>
                             </div>
                             <div className="row">

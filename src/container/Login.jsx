@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Link, Route } from 'react-router-dom';
-import Dashboard from './Dashboard';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();

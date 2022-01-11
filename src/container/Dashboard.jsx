@@ -4,9 +4,14 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import ServiceInfoDashboard from '../components/ServiceInfoDashboard';
 import CardCaseRT from '../components/CardCasesRT';
+import Login from './Login';
 
 const Dashoard = () => {
   const [sidebar] = useContext(SidebarContext);
+  const token = sessionStorage.getItem('token');
+  if (!token) {
+    return <Login />;
+  }
 
   return (
     <React.Fragment>

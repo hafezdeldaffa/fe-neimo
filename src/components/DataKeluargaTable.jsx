@@ -5,11 +5,13 @@ import FormEditAnggota from './FormEditAnggota';
 import DeleteConfirmation from './DeleteConfirmation';
 import { KeluargaContext } from '../context/DataKeluargaContext';
 import axios from 'axios';
+import Loading from './Loading';
 const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [dataKeluarga] = useContext(KeluargaContext);
   const data = dataKeluarga.anggotaKeluarga;
+  const [editData, setEditData] = useState({});
 
   const editHandler = async (setShow, id) => {
     setShow(true);
@@ -23,7 +25,7 @@ const DataKeluargaTable = () => {
     const dataEdit = await axios.get(
       `https://neimo-be.herokuapp.com/anggota-keluarga/${id}`
     );
-    console.log(dataEdit);
+    setEditData(dataEdit);
   };
 
   if (data && data.length) {
@@ -69,7 +71,11 @@ const DataKeluargaTable = () => {
             </table>
           </div>
         </div>
-        <FormEditAnggota show={show} onHide={() => setShow(false)} />
+        <FormEditAnggota
+          data={editData}
+          show={show}
+          onHide={() => setShow(false)}
+        />
 
         <DeleteConfirmation
           show={showDelete}

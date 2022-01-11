@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import FormEditAnggota from './FormEditAnggota';
 import DeleteConfirmation from './DeleteConfirmation';
 import { KeluargaContext } from '../context/DataKeluargaContext';
 import axios from 'axios';
-import Loading from './Loading';
+
 const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);

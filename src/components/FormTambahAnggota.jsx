@@ -4,25 +4,21 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 const FormTambahAnggota = () => {
+  const token = sessionStorage.getItem('token');
   const { register, handleSubmit } = useForm();
   const [show, setShow] = useState(false);
 
   const onSubmit = async (data) => {
     try {
-      const tokenRT = sessionStorage.getItem('token');
+      axios.interceptors.request.use((config) => {
+        config.headers.authorization = `Bearer ${token}`;
+        return config;
+      });
 
       console.log(data);
 
-      if (tokenRT) {
-        const dataVaksin = {
-          tanggalDosis1: data.tanggalDosis1,
-          tanggalDosis2: data.tanggalDosis2,
-          dosis1: data.dosis1,
-          dosis2: data.dosis2,
-          nama: data.nama,
-          role: data.role,
-        };
-      }
+      await axios.post('https://neimo-be.herokuapp.com/anggota-keluarga', data);
+      setShow(false);
     } catch (error) {
       throw error;
     }

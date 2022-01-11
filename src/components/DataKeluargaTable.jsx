@@ -4,6 +4,7 @@ import * as AiIcons from 'react-icons/ai'
 import FormEditAnggota from './FormEditAnggota';
 import DeleteConfirmation from './DeleteConfirmation';
 import { KeluargaContext } from '../context/DataKeluargaContext';
+import Loading from './Loading';
 const DataKeluargaTable = () => {
     const [show, setShow] = useState(false);
     const [showDelete, setShowDelete] = useState(false)
@@ -41,15 +42,6 @@ const DataKeluargaTable = () => {
                                         )
                                     })
                                 }
-                                <tr className="border-1">
-                                    <th scope="row" className=" d-none d-sm-block">1</th>
-                                    <td>Agus</td>
-                                    <td>Kepala Keluarga</td>
-                                    <td>
-                                        <FaIcons.FaEdit style={{ color: '2647bd' }} onClick={() => setShow(true)}></FaIcons.FaEdit>
-                                        /
-                                        <AiIcons.AiOutlineDelete style={{ color: '2647bd' }} onClick={() => setShowDelete(true)}></AiIcons.AiOutlineDelete></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -67,34 +59,7 @@ const DataKeluargaTable = () => {
         )
     } else {
         return (
-            <>
-                <div className='d-flex justify-content-center'>
-                    <div class="spinner-grow text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-secondary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-success" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-danger" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-warning" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-info" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-light" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <div class="spinner-grow text-dark" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            </>
+           <Loading />
         )
     }
 

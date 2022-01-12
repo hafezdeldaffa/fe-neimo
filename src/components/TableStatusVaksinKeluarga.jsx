@@ -1,15 +1,19 @@
 import { useContext, useEffect } from "react"
-import {getAxiosVaksin, VaksinKeluargaContext } from "../context/DataVaksinKeluaga"
+import { getAxiosVaksin, VaksinKeluargaContext } from "../context/DataVaksinKeluaga"
 
 const TableStatusVaksinKeluarga = () => {
     const [dataVaksinKeluarga, setdataVaksinKeluarga] = useContext(VaksinKeluargaContext)
     const data = dataVaksinKeluarga ? dataVaksinKeluarga.vaksinKeluarga : undefined
 
-    useEffect(async()=>{
-        const axiosData =  await getAxiosVaksin()
-        setdataVaksinKeluarga(axiosData)
-      },[])
-      
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxiosVaksin()
+            setdataVaksinKeluarga(axiosData)
+        }
+        getData()
+
+    }, [setdataVaksinKeluarga])
+
 
     if (data && data.length) {
         return (
@@ -46,8 +50,8 @@ const TableStatusVaksinKeluarga = () => {
                 </div>
             </div>
         )
-    }else{
-        return(
+    } else {
+        return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
                     <div className="table-responsive">

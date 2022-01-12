@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import Navbar from "../components/Navbar"
 import * as mdIcons from "react-icons/md"
 import { getAxiosPofile, ProfileContext } from "../context/ProfileContext";
@@ -13,18 +13,22 @@ const HalamanAkun = () => {
     const akunUser = profile ? profile.kepalaKeluarga : undefined
     const RT = profile ? profile.RT : undefined
 
-    useEffect(async () => {
-        const axiosData = await getAxiosPofile()
-        setProfile(axiosData)
-    }, [])
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxiosPofile()
+            setProfile(axiosData)
+        }
+        getData()
+
+    }, [setProfile])
 
     const role = sessionStorage.getItem('role')
 
-    function handleLogout(){
+    function handleLogout() {
         window.sessionStorage.removeItem('token')
         window.sessionStorage.removeItem('role')
         window.location.href = '/';
-      }
+    }
 
     if (akunUser && RT) {
         return (
@@ -35,12 +39,12 @@ const HalamanAkun = () => {
                         <div className="col-md-4">
                             <div className="card shadow" style={{ width: '100%' }}>
                                 <div className="card-body">
-                                    <div className="row">
+                                    <div className="row d-flex align-items-center">
                                         <div className="col-4">
                                             <img src='/images/Avatar.png' alt="" style={{ width: '90px' }} />
                                         </div>
                                         <div className="col-8">
-                                            <h5 className="card-title mt-4">{akunUser.namaKepalaKeluarga}</h5>
+                                            <h5 className="card-title">{akunUser.namaKepalaKeluarga}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -53,9 +57,9 @@ const HalamanAkun = () => {
                                             <h6 className="text-center"
                                                 value={RT._id}
                                             >
-                                                { RT._id} <mdIcons.MdContentCopy></mdIcons.MdContentCopy>
+                                                {RT._id} <mdIcons.MdContentCopy></mdIcons.MdContentCopy>
                                             </h6>
-                                            
+
                                         </div>
                                     </div>
                                     :
@@ -63,20 +67,21 @@ const HalamanAkun = () => {
                             }
                             <div className="card shadow mt-3" style={{ width: '100%' }}>
                                 <div className="card-body">
-                                    <a style={{ cursor: 'default' }}
+                                    <button style={{border: 'none', backgroundColor: 'white'}}
                                         onClick={() => {
                                             setCard('keluarga');
                                         }}
                                         onPointerOver={() => setHover1(true)}
                                         onPointerOut={() => setHover1(false)}
+                                        
                                     >
                                         <h5 className="card-title" style={{ cursor: 'default', color: hover1 ? '#2647BD' : null }}>
                                             <mdIcons.MdManageAccounts> </mdIcons.MdManageAccounts>
                                             <span>Profile Keluarga</span>
                                         </h5>
-                                    </a>
+                                    </button>
                                     <hr />
-                                    <a
+                                    <button style={{border: 'none', backgroundColor: 'white'}}
                                         onClick={() => {
                                             setCard('rt')
                                         }}
@@ -87,15 +92,15 @@ const HalamanAkun = () => {
                                             <mdIcons.MdGroups></mdIcons.MdGroups>
                                             <span>Profile RT</span>
                                         </h5>
-                                    </a>
+                                    </button>
                                     <hr />
-                                    <a
-                                    onClick={handleLogout}
-                                     onPointerOver={() => setHover3(true)}
-                                     onPointerOut={() => setHover3(false)}
+                                    <button style={{border: 'none', backgroundColor: 'white'}}
+                                        onClick={handleLogout}
+                                        onPointerOver={() => setHover3(true)}
+                                        onPointerOut={() => setHover3(false)}
                                     >
                                         <h5 className="card-title" style={{ cursor: 'default', color: hover3 ? '#2647BD' : null }}><mdIcons.MdLogout></mdIcons.MdLogout><span>Keluar</span></h5>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +155,9 @@ const HalamanAkun = () => {
         )
     } else {
         return (
-            <Loading />
+            <div className="mt-5">
+                <Loading />
+            </div>
         )
     }
 }

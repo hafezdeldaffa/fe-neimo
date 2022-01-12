@@ -20,15 +20,23 @@ const TableLaporanWargaDetail = () => {
     const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
     const dataAnggota = dataKeluarga ? dataKeluarga.anggotaRT : undefined
 
-    useEffect(async () => {
-        const axiosData = await getAxiosLaporan()
-        setDataLaporan(axiosData)
-    }, [])
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxiosLaporan()
+            setDataLaporan(axiosData)
+        }
+        getData()
 
-    useEffect(async () => {
-        const axiosData = await getAxios()
-        setDataKeluarga(axiosData)
-    }, [])
+    }, [setDataLaporan])
+
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxios()
+            setDataKeluarga(axiosData)
+        }
+        getData()
+
+    }, [setDataKeluarga])
 
     if (dataLaporanRT && dataLaporanRT.length && dataAnggota && dataAnggota.length) {
         const detailLaporan = dataLaporanRT.filter(e => e.keluargaId === obj.id)

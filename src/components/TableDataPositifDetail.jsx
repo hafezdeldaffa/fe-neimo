@@ -13,10 +13,13 @@ const TableDataPositifDetail = () => {
     const [dataPositif, setDataPositif] = useContext(DataPositifContext)
     const dataPositifRT = dataPositif ? dataPositif.dataRT : undefined
 
-    useEffect(async () => {
+    useEffect(() => {
+        async function getData(){
         const axiosData = await getAxiosPositif()
         setDataPositif(axiosData)
-    }, [])
+        }
+        getData()
+    }, [setDataPositif])
 
 
     if (dataPositifRT && dataPositifRT.length) {

@@ -8,10 +8,14 @@ const TableTambahLaporan = () => {
     const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
     const data = dataKeluarga ? dataKeluarga.anggotaKeluarga : undefined
 
-    useEffect(async () => {
-        const axiosData = await getAxios()
-        setDataKeluarga(axiosData)
-    }, [])
+    useEffect( () => {
+        async function getData() {
+            const axiosData = await getAxios()
+            setDataKeluarga(axiosData)
+        }
+        getData()
+
+    }, [setDataKeluarga])
 
     if (data && data.length) {
         return (
@@ -74,9 +78,9 @@ const TableTambahLaporan = () => {
     } else {
         return (
             data === undefined ?
-               <div className='mt-3'>
+                <div className='mt-3'>
                     <Loading />
-               </div> :
+                </div> :
                 <div className="container mt-5">
                     <div className="table-wrapper-scroll-y my-custom-scrollbar">
                         <div className="table-responsive">

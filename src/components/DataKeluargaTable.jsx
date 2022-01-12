@@ -12,10 +12,13 @@ const DataKeluargaTable = () => {
   const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
   const data = dataKeluarga ? dataKeluarga.anggotaKeluarga : undefined
 
-  useEffect(async () => {
-    const axiosData = await getAxios()
-    setDataKeluarga(axiosData)
-  }, [])
+  useEffect(() => {
+    async function getData() {
+      const axiosData = await getAxios()
+      setDataKeluarga(axiosData)
+    }
+    getData()
+  }, [setDataKeluarga])
 
   const editHandler = async (setShow, id) => {
     setShow(true);

@@ -1,14 +1,7 @@
-import axios from 'axios';
 import { Modal } from 'react-bootstrap';
-import { useState } from 'react';
 
 const FormEditAnggota = (props) => {
-  let data;
-  props.data.data === undefined ? (
-    <></>
-  ) : (
-    (data = props.data.data.anggotaKeluarga)
-  );
+  console.log(props.data);
 
   return (
     <>
@@ -45,7 +38,6 @@ const FormEditAnggota = (props) => {
                   id='name'
                   aria-describedby='name'
                   placeholder='Nama Lengkap'
-                  value={data === undefined ? '' : data.nama}
                 />
                 {/* INPUT ROLE */}
                 <select
@@ -53,56 +45,10 @@ const FormEditAnggota = (props) => {
                   aria-label='Default select example'
                 >
                   <option>--Pilih Role--</option>
-                  <option
-                    selected={
-                      data === undefined
-                        ? 'false'
-                        : data.role === 'Anak'
-                        ? 'true'
-                        : 'false'
-                    }
-                    value='Kepala Keluarga'
-                  >
-                    Kepala Keluarga
-                  </option>
-                  <option
-                    selected={
-                      data === undefined
-                        ? 'false'
-                        : data.role === 'Istri'
-                        ? 'true'
-                        : 'false'
-                    }
-                    value='Istri'
-                  >
-                    Istri
-                  </option>
-                  <option
-                    selected={
-                      data === undefined
-                        ? 'false'
-                        : data.role === 'Anak'
-                        ? 'true'
-                        : 'false'
-                    }
-                    value='Anak'
-                  >
-                    Anak
-                  </option>
-                  <option
-                    selected={
-                      data === undefined
-                        ? 'false'
-                        : data.role !== 'Kepala Keluarga' &&
-                          data.role !== 'Anak' &&
-                          data.role !== 'Istri'
-                        ? 'true'
-                        : 'false'
-                    }
-                    value='Lain-lain'
-                  >
-                    Lain-Lain
-                  </option>
+                  <option value='Kepala Keluarga'>Kepala Keluarga</option>
+                  <option value='Istri'>Istri</option>
+                  <option value='Anak'>Anak</option>
+                  <option value='Lain-lain'>Lain-Lain</option>
                 </select>
               </div>
             </div>

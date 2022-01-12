@@ -22,7 +22,7 @@ const TableStatusCovidKeluarga = () => {
                             <tbody>
                                 {data.map((element, index) => {
                                     return (
-                                        <tr className="border-1">
+                                        <tr className="border-1" key={index}>
                                             <th scope="row" className=" d-none d-sm-block">{index + 1}</th>
                                             <td>{element.nama}</td>
                                             <td>{element.statusCovid}</td>
@@ -36,9 +36,47 @@ const TableStatusCovidKeluarga = () => {
                 </div>
             </div>
         )
+    }if (dataKeluarga === "kosong") {
+        return(
+            <div className="container">
+                <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="table-responsive">
+                        <table className="table table-borderless table-hover shadow text-center">
+                            <thead className="bg-table text-white">
+                                <tr>
+                                    <th scope="col" className=" d-none d-sm-block">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Status Covid</th>
+                                    <th scope="col">Tanggal</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p className="text-center">data masih kosong</p>
+                    </div>
+                </div>
+            </div>
+        )
     }else{
         return(
-            <Loading />
+            data === undefined ? 
+            <Loading /> :
+            <div className="container">
+                <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="table-responsive">
+                        <table className="table table-borderless table-hover shadow text-center">
+                            <thead className="bg-table text-white">
+                                <tr>
+                                    <th scope="col" className=" d-none d-sm-block">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Status Covid</th>
+                                    <th scope="col">Tanggal</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p className="text-center">data masih kosong</p>
+                    </div>
+                </div>
+            </div>
          )
     }
 

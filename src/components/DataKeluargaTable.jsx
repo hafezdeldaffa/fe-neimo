@@ -1,31 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import FormEditAnggota from './FormEditAnggota';
 import DeleteConfirmation from './DeleteConfirmation';
-import { KeluargaContext } from '../context/DataKeluargaContext';
-import axios from 'axios';
-
+import { getAxios, KeluargaContext } from '../context/DataKeluargaContext';
+import Loading from './Loading';
 const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  const [dataKeluarga] = useContext(KeluargaContext);
-  const data = dataKeluarga.anggotaKeluarga;
-  const [editData, setEditData] = useState({});
+  const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
+  const [dataEdit, setDataEdit] = useState({});
+  const data = dataKeluarga ? dataKeluarga.anggotaKeluarga : undefined;
 
-  const editHandler = async (setShow, id) => {
+  useEffect(() => {
+    async function getData() {
+      const axiosData = await getAxios();
+      setDataKeluarga(axiosData);
+    }
+    getData();
+  }, []);
+
+  const editHandler = (data) => {
     setShow(true);
-    const token = sessionStorage.getItem('token');
-
-    axios.interceptors.request.use((config) => {
-      config.headers.authorization = `Bearer ${token}`;
-      return config;
-    });
-
-    const dataEdit = await axios.get(
-      `https://neimo-be.herokuapp.com/anggota-keluarga/${id}`
-    );
-    setEditData(dataEdit);
+    setDataEdit(data);
   };
 
   if (data && data.length) {
@@ -47,7 +44,7 @@ const DataKeluargaTable = () => {
               <tbody>
                 {data.map((element, index) => {
                   return (
-                    <tr className='border-1'>
+                    <tr className='border-1' key={index}>
                       <th scope='row' className=' d-none d-sm-block'>
                         {index + 1}
                       </th>
@@ -56,12 +53,14 @@ const DataKeluargaTable = () => {
                       <td>
                         <FaIcons.FaEdit
                           style={{ color: '2647bd' }}
-                          onClick={() => editHandler(setShow, element._id)}
+                          onClick={() => {
+                            editHandler(element);
+                          }}
                         ></FaIcons.FaEdit>
                         /
                         <AiIcons.AiOutlineDelete
                           style={{ color: '2647bd' }}
-                          onClick={() => setShowDelete(true)}
+                          onClick={() => setShowDelete()}
                         ></AiIcons.AiOutlineDelete>
                       </td>
                     </tr>
@@ -72,7 +71,7 @@ const DataKeluargaTable = () => {
           </div>
         </div>
         <FormEditAnggota
-          data={editData}
+          data={dataEdit}
           show={show}
           onHide={() => setShow(false)}
         />
@@ -83,36 +82,52 @@ const DataKeluargaTable = () => {
         />
       </div>
     );
-  } else {
+  }
+  if (dataKeluarga === 'kosong') {
     return (
-      <>
-        <div className='d-flex justify-content-center'>
-          <div class='spinner-grow text-primary' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-secondary' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-success' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-danger' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-warning' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-info' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-light' role='status'>
-            <span class='visually-hidden'>Loading...</span>
-          </div>
-          <div class='spinner-grow text-dark' role='status'>
-            <span class='visually-hidden'>Loading...</span>
+      <div className='container'>
+        <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+          <div className='table-responsive'>
+            <table className='table table-borderless table-hover shadow text-center'>
+              <thead className='bg-table text-white'>
+                <tr>
+                  <th scope='col' className=' d-none d-sm-block'>
+                    No
+                  </th>
+                  <th scope='col'>Nama</th>
+                  <th scope='col'>Status</th>
+                  <th scope='col'>Edit / Hapus</th>
+                </tr>
+              </thead>
+            </table>
+            <p className='text-center'>data masih kosong</p>
           </div>
         </div>
-      </>
+      </div>
+    );
+  } else {
+    return data === undefined ? (
+      <Loading />
+    ) : (
+      <div className='container'>
+        <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+          <div className='table-responsive'>
+            <table className='table table-borderless table-hover shadow text-center'>
+              <thead className='bg-table text-white'>
+                <tr>
+                  <th scope='col' className=' d-none d-sm-block'>
+                    No
+                  </th>
+                  <th scope='col'>Nama</th>
+                  <th scope='col'>Status</th>
+                  <th scope='col'>Edit / Hapus</th>
+                </tr>
+              </thead>
+            </table>
+            <p className='text-center'>data masih kosong</p>
+          </div>
+        </div>
+      </div>
     );
   }
 };

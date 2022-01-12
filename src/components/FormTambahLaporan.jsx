@@ -40,8 +40,8 @@ const FormTambahLaporan = (props) => {
                                         <tr>
                                             <td><li>{c}</li></td>
                                             <td className="px-2">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                                <div className="form-check form-switch">
+                                                    <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                                                 </div>
                                             </td>
                                         </tr>
@@ -50,7 +50,7 @@ const FormTambahLaporan = (props) => {
                             </ol>
                         </table>
                         <div className="mx-3">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Catatan Tambahan"></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Catatan Tambahan"></textarea>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

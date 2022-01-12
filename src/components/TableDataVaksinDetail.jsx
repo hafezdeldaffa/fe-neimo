@@ -1,5 +1,27 @@
-const TableDataVaksinDetail = () =>{
-    return(
+import { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { getAxiosVaksin, VaksinKeluargaContext } from '../context/DataVaksinKeluaga';
+import Loading from './Loading';
+
+const TableDataVaksinDetail = () => {
+    let location = useLocation();
+
+    const loc = location.search.split('?');
+    const qs = require('qs');
+    const obj = qs.parse(loc[1]);
+
+    const [dataVaksinKeluarga, setdataVaksinKeluarga] = useContext(VaksinKeluargaContext)
+    const dataVaksinRT = dataVaksinKeluarga ? dataVaksinKeluarga.vaksinRT : undefined
+    console.log(dataVaksinKeluarga)
+
+    useEffect(async () => {
+        const axiosData = await getAxiosVaksin()
+        setdataVaksinKeluarga(axiosData)
+    }, [])
+
+    if(dataVaksinRT && dataVaksinRT.length){
+        const detailData = dataVaksinRT.filter(e => e.keluargaId === obj.id)
+    return (
         <div className="container">
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
                 <div className="table-responsive">
@@ -15,40 +37,27 @@ const TableDataVaksinDetail = () =>{
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {
-                            filtered.map((element, index) => {
-                               return(
-                                <tr className="border-1">
-                                    <th scope="row" className=" d-none d-sm-block">{index+1}</th>
-                                    <td>{element.attributes.Country_Region}</td>
-                                    <td>{element.attributes.Confirmed}</td>
-                                    <td>{element.attributes.Deaths}</td>
-                                    <td>{element.attributes.Recovered}</td>
-                            </tr>
-                               )
-                            })
-                        } */}
-                            <tr className="border-1">
-                                <th scope="row" className=" d-none d-sm-block">1</th>
-                                <td>Agus</td>
-                                <td>Astra</td>
-                                <td>24/12/2021</td>
-                                <td>Astra</td>
-                                <td>24/12/2021</td>
-                            </tr>
-                            <tr className="border-1">
-                                <th scope="row" className=" d-none d-sm-block">2</th>
-                                <td>Ani</td>
-                                <td>Astra</td>
-                                <td>24/12/2021</td>
-                                <td>Astra</td>
-                                <td>24/12/2021</td>
-                            </tr>
+                            {detailData.map((element, index) => {
+                                return (
+                                    <tr className="border-1" key={index}>
+                                        <th scope="row" className=" d-none d-sm-block">{index+1}</th>
+                                        <td>{element.nama}</td>
+                                        <td>{element.dosis1}</td>
+                                        <td>{element.tanggalDosis1}</td>
+                                        <td>{element.dosis2}</td>
+                                        <td>{element.tanggalDosis2}</td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    )
+    )}else{
+        return(
+            <Loading />
+        )
+    }
 }
 export default TableDataVaksinDetail

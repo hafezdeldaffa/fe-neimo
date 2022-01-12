@@ -31,9 +31,9 @@ const Sort = () => {
       ></img>
       <ul className='dropdown-menu px-3'>
         <div className='form-check'>
-          {categories.map((c) => (
+          {categories.map((c, i) => (
             <>
-              <li>
+              <li key={i}>
                 <input
                   className='form-check-input'
                   type='radio'

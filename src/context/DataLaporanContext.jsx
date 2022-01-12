@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
-export const KeluargaContext = createContext();
+export const LaporanContext = createContext();
 const token = sessionStorage.getItem('token');
 
 axios.interceptors.request.use((config) => {
@@ -9,11 +9,10 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-
-export const getAxios = async () => {
+export const getAxiosLaporan = async () => {
 
   try {
-    const result = await axios.get('https://neimo-be.herokuapp.com/anggota-keluarga');
+    const result = await axios.get('https://neimo-be.herokuapp.com/laporan');
     return result.data
   } catch (err) {
     console.log(err.response.status)
@@ -25,11 +24,13 @@ export const getAxios = async () => {
   }
 }
 
-export const KeluargaContextProvider = (props) => {
-  const [dataKeluarga, setDataKeluarga] = useState([]);
+export const LaporanProvider = (props) => {
+  const [dataLaporan, setDataLaporan] = useState([]);
   return (
-    <KeluargaContext.Provider value={[dataKeluarga, setDataKeluarga]}>
+    <LaporanContext.Provider
+      value={[dataLaporan, setDataLaporan]}
+    >
       {props.children}
-    </KeluargaContext.Provider>
+    </LaporanContext.Provider>
   );
 };

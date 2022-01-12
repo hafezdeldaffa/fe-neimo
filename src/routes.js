@@ -21,8 +21,8 @@ const routes = [
     path: '/global',
   },
   {
-    name: 'Dashboard',
-    path: '/dashboard',
+    name: 'Profile',
+    path: '/profile',
   },  {
     title: 'Home',
     path: '/',
@@ -63,12 +63,6 @@ const routes = [
     title: 'Buat Laporan',
     path: '/buat-laporan',
     icon: <IoIcons.IoIosPaper />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   },
 ];

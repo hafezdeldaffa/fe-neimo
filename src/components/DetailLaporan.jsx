@@ -16,6 +16,9 @@ const DetailLaporan = (props) => {
         'Apakah Anda memiliki riwayat penyakit Ginjal?',
         'Apakah Anda memiliki riwayat penyakit Asma?',
     ]
+
+    const dataLaporan = props.dataLaporan
+    const dataAnggota = props.dataAnggota
     return (
         <>
             <Modal show={props.show} onHide={props.onHide} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -24,26 +27,92 @@ const DetailLaporan = (props) => {
                 </Modal.Header>
                 <form>
                     <Modal.Body>
-                        <h6 className="ms-3">Nama : Hasan </h6>
+                        <h6 className="ms-3">Nama : {dataAnggota.nama} </h6>
                         <div className="d-flex justify-content-start ms-3">
-                            <h6>Tanggal Pelaporan : 24/12/2021</h6>
+                            <h6>Tanggal Pelaporan : {dataLaporan.createdAt.substr(0, 10)}</h6>
                         </div>
-                        <table >
-                            <ol>
-                                {pertanyaan.map((c) => {
+                        <table className="ms-3">
+                            <tbody>
+                                <tr>
+                                    <td>{pertanyaan[0]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.perjalananDomestik}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[1]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.turisAsing}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[2]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.kontakPositif}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[3]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.demam}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[4]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.batuk}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[5]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.nyeriTenggorokan}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[6]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.sesakNafas}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[7]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.batukPilek}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[8]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.diabetes}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[9]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.hipertensi}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[10]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.jantung}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[11]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.ginjal}</td>
+                                </tr>
+                                <tr>
+                                    <td>{pertanyaan[12]}</td>
+                                    <td className="px-2 fw-bold">{dataLaporan.asma}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {/* <div className="row ms-2">
+                            <div className="col-11">
+                                {pertanyaan.map((c, index) => {
                                     return (
-                                        <tr>
-                                            <td><li>{c}</li></td>
-                                            <td className="px-2">
-                                                Ya
-                                            </td>
-                                        </tr>
+                                        <p style={{ marginBottom: '-3px' }}>{c}</p>
                                     )
                                 })}
-                            </ol>
-                        </table>
-                        <div className="mx-3">
-                            Catatan Tambahan : Segera membutuhkan bantuan oksigen
+                            </div>
+                            <div className="col-1">
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                                <p style={{ marginBottom: '-2px' }}>{dataLaporan.perjalananDomestik}</p>
+                            </div>
+
+                        </div> */}
+                        <div className="mx-3 fw-bold">
+                            Catatan Tambahan : {dataLaporan.catatanTambahan}
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

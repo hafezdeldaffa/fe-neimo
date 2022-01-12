@@ -11,14 +11,13 @@ const Dashoard = () => {
   return (
     <React.Fragment>
       <Navbar />
-        <div className="row">
-          <div className={!sidebar ? 'col-sm-2' : null}>
-          </div>
-          <div className={!sidebar ? 'col-sm-10' : 'col-sm-12'}>
+      <div className='row'>
+        <div className={!sidebar ? 'col-sm-2' : null}></div>
+        <div className={!sidebar ? 'col-sm-10' : 'col-sm-12'}>
           <ServiceInfoDashboard></ServiceInfoDashboard>
           <CardCaseRT></CardCaseRT>
-          </div>
         </div>
+      </div>
       <Sidebar />
     </React.Fragment>
   );

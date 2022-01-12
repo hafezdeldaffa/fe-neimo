@@ -10,14 +10,13 @@ const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
-  const data = dataKeluarga ? dataKeluarga.anggotaKeluarga  : undefined
+  const data = dataKeluarga ? dataKeluarga.anggotaKeluarga : undefined
 
-  useEffect(async()=>{
-    const axiosData =  await getAxios()
+  useEffect(async () => {
+    const axiosData = await getAxios()
     setDataKeluarga(axiosData)
-  },[])
-  
-console.log(data)
+  }, [])
+
   const editHandler = async (setShow, id) => {
     setShow(true);
     const token = sessionStorage.getItem('token');
@@ -84,32 +83,52 @@ console.log(data)
         />
       </div>
     );
-  }if (dataKeluarga === "kosong") {
-   return(
-    <div className='container'>
-    <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-      <div className='table-responsive'>
-        <table className='table table-borderless table-hover shadow text-center'>
-          <thead className='bg-table text-white'>
-            <tr>
-              <th scope='col' className=' d-none d-sm-block'>
-                No
-              </th>
-              <th scope='col'>Nama</th>
-              <th scope='col'>Status</th>
-              <th scope='col'>Edit / Hapus</th>
-            </tr>
-          </thead>
-        </table>
-        <p className='text-center'>data masih kosong</p>
-      </div>
-    </div>
-  </div>
-   )
-  }
-   else {
+  } if (dataKeluarga === "kosong") {
     return (
-      <Loading />
+      <div className='container'>
+        <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+          <div className='table-responsive'>
+            <table className='table table-borderless table-hover shadow text-center'>
+              <thead className='bg-table text-white'>
+                <tr>
+                  <th scope='col' className=' d-none d-sm-block'>
+                    No
+                  </th>
+                  <th scope='col'>Nama</th>
+                  <th scope='col'>Status</th>
+                  <th scope='col'>Edit / Hapus</th>
+                </tr>
+              </thead>
+            </table>
+            <p className='text-center'>data masih kosong</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+  else {
+    return (
+      data === undefined ?
+        <Loading /> :
+        <div className='container'>
+          <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+            <div className='table-responsive'>
+              <table className='table table-borderless table-hover shadow text-center'>
+                <thead className='bg-table text-white'>
+                  <tr>
+                    <th scope='col' className=' d-none d-sm-block'>
+                      No
+                    </th>
+                    <th scope='col'>Nama</th>
+                    <th scope='col'>Status</th>
+                    <th scope='col'>Edit / Hapus</th>
+                  </tr>
+                </thead>
+              </table>
+              <p className='text-center'>data masih kosong</p>
+            </div>
+          </div>
+        </div>
     );
   }
 };

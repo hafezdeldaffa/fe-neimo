@@ -4,6 +4,7 @@ import * as FiIcons from 'react-icons/fi'
 import { useContext, useEffect } from 'react';
 import {getAxiosWarga, WargaRTContext } from '../context/WargaRTContext';
 import { VaksinKeluargaContext } from '../context/DataVaksinKeluaga';
+import Loading from './Loading';
 const TableDataVaksinRT = () => {
     let location = useLocation()
 
@@ -56,6 +57,10 @@ const TableDataVaksinRT = () => {
         )
     } else {
        return(
+        datakeluargaRT === undefined ?
+        <div className='mt-5'>
+             <Loading/>
+        </div> :
         <div className="container">
         <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <div className="table-responsive">

@@ -104,7 +104,7 @@ const HalamanAkun = () => {
                                 card === 'keluarga' ?
                                     <div className="card mt-3 mt-md-0" style={{ width: '100%' }}>
                                         <div className="card-body">
-                                            <h5 className="card-title">PROFILE KELUARGA</h5>
+                                            <h5 className="card-title fw-bold">PROFILE KELUARGA</h5>
                                             <hr />
                                             <h6>Nama Kepala Keluarga</h6>
                                             <p className="text-secondary">{akunUser.namaKepalaKeluarga}</p>
@@ -126,7 +126,7 @@ const HalamanAkun = () => {
                                     </div> :
                                     <div className="card mt-3 mt-md-0" style={{ width: '100%' }}>
                                         <div className="card-body">
-                                            <h5 className="card-title">PROFILE RT</h5>
+                                            <h5 className="card-title fw-bold">PROFILE RT</h5>
                                             <hr />
                                             <h6>Nama Ketua RT</h6>
                                             <p className="text-secondary">{RT.namaKepalaKeluarga}</p>

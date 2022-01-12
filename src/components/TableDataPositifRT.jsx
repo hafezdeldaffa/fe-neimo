@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import * as FiIcons from "react-icons/fi"
 import { useContext, useEffect } from 'react';
 import {getAxiosWarga, WargaRTContext } from '../context/WargaRTContext';
+import Loading from './Loading';
 const TableDataPositifRT = () => {
     let location = useLocation()
     const [dataWargaRT, setDataWargaRT] = useContext(WargaRTContext)
@@ -47,6 +48,10 @@ const TableDataPositifRT = () => {
         )
     }else{
         return(
+            datakeluargaRT === undefined ?
+           <div className='mt-5'>
+                <Loading />
+           </div> :
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
                     <div className="table-responsive">

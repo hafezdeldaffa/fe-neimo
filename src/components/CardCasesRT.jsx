@@ -76,7 +76,7 @@ const CardCaseRT = () => {
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <p className="card-text">{dataPositifRT && dataPositifRT.length ? dataRT.length - dataPositifRT.length : 0} Berstatus Negatif</p>
+                                    <p className="card-text">{dataPositifRT && dataPositifRT.length && dataRT && dataRT.length ? dataRT.length - dataPositifRT.length : 0} Berstatus Negatif</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataPositifRT && dataPositifRT.length ? positif.length: 0} Berstatus Positif</p>
                                 </div>
                                 <div className="col">
@@ -101,7 +101,7 @@ const CardCaseRT = () => {
                                 <div className="col">
                                     <p className="card-text">{dataVaksinRT &&  dataVaksinRT.length ? dosis1.length : 0} Orang Dosis 1</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataVaksinRT &&  dataVaksinRT.length ? dosis2.length :0} Orang Dosis 2</p>
-                                    <p className="card-text" style={{ marginTop: '-20px' }}>{dataVaksinRT &&  dataVaksinRT.length ? dataRT.length - dataVaksinRT.length : 0} Orang Belum Vaksin</p>
+                                    <p className="card-text" style={{ marginTop: '-20px' }}>{dataVaksinRT &&  dataVaksinRT.length && dataRT && dataRT.length ? dataRT.length - dataVaksinRT.length : 0} Orang Belum Vaksin</p>
                                 </div>
                                 <div className="col">
                                     <h1 className="text-end" style={{ fontSize: '70px', marginTop: '-20px' }}>{dataVaksinRT &&  dataVaksinRT.length ? dosis1.length : 0}</h1>

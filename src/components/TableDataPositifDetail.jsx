@@ -21,6 +21,7 @@ const TableDataPositifDetail = () => {
 
     if (dataPositifRT && dataPositifRT.length) {
         const detailData = dataPositifRT.filter(e => e.keluargaId === obj.id)
+        console.log(detailData)
         return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">

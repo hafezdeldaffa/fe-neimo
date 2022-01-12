@@ -1,7 +1,7 @@
 import * as GrIcons from 'react-icons/gr';
 import React, { useState, useContext, useEffect } from 'react';
 import FormTambahLaporan from './FormTambahLaporan';
-import {getAxios, KeluargaContext } from '../context/DataKeluargaContext';
+import { getAxios, KeluargaContext } from '../context/DataKeluargaContext';
 import Loading from './Loading';
 const TableTambahLaporan = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -73,7 +73,27 @@ const TableTambahLaporan = () => {
         )
     } else {
         return (
-            <Loading />
+            data === undefined ?
+               <div className='mt-3'>
+                    <Loading />
+               </div> :
+                <div className="container mt-5">
+                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                        <div className="table-responsive">
+                            <table className="table table-borderless table-hover shadow text-center">
+                                <thead className="bg-table text-white">
+                                    <tr>
+                                        <th scope="col" className=" d-none d-sm-block">No</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Tambah Laporan</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <p className='text-center'>belum terdapat data anggota keluarga</p>
+                        </div>
+                    </div>
+                </div>
         )
     }
 }

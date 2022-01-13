@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-<<<<<<< HEAD
 import { Link, useLocation} from 'react-router-dom';
 import GagalLoginModal from '../components/GagalLoginModal';
-=======
-import { Link } from 'react-router-dom';
->>>>>>> 00189421ac04c6e645075e52848170eb0cde690c
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
+
   const location = useLocation()
   const loc = location.search.split('?')
   const qs = require('qs');
   const obj = qs.parse(loc[1]);
   console.log(obj.status)
+  
   const [showModal, setShowModal] = useState(false);
 
   const onSubmit = async (data,e) => {

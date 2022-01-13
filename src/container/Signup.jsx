@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const { register, handleSubmit } = useForm();
+  const [show, setShow] = useState(false)
 
   const onSubmit = async (data) => {
     const signup = await axios.post(
@@ -19,6 +20,7 @@ const Signup = () => {
     }
   };
 
+  console.log(show)
   return (
     <React.Fragment>
       <Navbar />
@@ -120,13 +122,13 @@ const Signup = () => {
                 placeholder='Role Anda'
                 {...register('role', { required: true })}
               >
-                <option selected='true' value='Keluarga'>
+                <option selected='true' value='Keluarga' onClick={() => setShow(false)}>
                   Role : Keluarga
                 </option>
 
-                <option value='RT'>Role : RT</option>
+                <option value='RT' onClick={() => setShow(true)}>Role : RT</option>
               </select>
-              <div className='mb-3'>
+              <div className={show === true ? 'mb-3 d-none' : 'mb-3'}>
                 <input
                   placeholder='Token RT'
                   type='text'

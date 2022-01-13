@@ -159,3 +159,12 @@
 .btn-delete:hover {
   background-color: #d4471a !important;
 }
+
+
+.bg-serviceCard{
+  background-color: #545454 !important;
+}
+
+.bg-serviceCard:hover{
+  background-color: #F16133 !important;
+}

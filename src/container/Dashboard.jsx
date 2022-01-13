@@ -9,6 +9,11 @@ import ChartIndo from '../components/ChartIndo';
 import Loading from '../components/Loading';
 
 const Dashoard = () => {
+  const token = sessionStorage.getItem('token');
+  if (!token) {
+    return <Login />;
+  }
+  
   const [sidebar] = useContext(SidebarContext);
   const [DailyCases, setDailyCases] = useContext(IndonesiaDailyContext);
 

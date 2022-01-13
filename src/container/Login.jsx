@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+<<<<<<< HEAD
 import { Link, useLocation} from 'react-router-dom';
 import GagalLoginModal from '../components/GagalLoginModal';
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> 00189421ac04c6e645075e52848170eb0cde690c
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -17,22 +21,21 @@ const Login = () => {
   const onSubmit = async (data,e) => {
     e.preventDefault()
     try {
-      console.log(" ini data");
+      console.log(' ini data');
       console.log(data);
       const login = await axios.post(
         'https://neimo-be.herokuapp.com/auth/login',
         data
       );
-      console.log(" ini login");
+      console.log(' ini login');
       console.log(login);
       sessionStorage.setItem('token', login.data.token);
       sessionStorage.setItem('role', data.role);
 
       const role = sessionStorage.getItem('role');
-      const token = sessionStorage.getItem('token');      
+      const token = sessionStorage.getItem('token');
 
       if (role.length && token.length) {
-        
         window.location.href = '/dashboard';
         // window.alert('Berhasil Login')
       } else {

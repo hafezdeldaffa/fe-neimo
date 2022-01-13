@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-const DeleteConfirmation = (props) => {
+
+const DeleteLaporan = (props) => {
   const { register, handleSubmit } = useForm();
   const token = sessionStorage.getItem('token');
 
@@ -11,16 +12,16 @@ const DeleteConfirmation = (props) => {
         config.headers.authorization = `Bearer ${token}`;
         return config;
       });
-      console.log(data);
+
       const id = data.id;
 
       const dataDelete = await axios.delete(
-        `https://neimo-be.herokuapp.com/anggota-keluarga/${id}`
+        `https://neimo-be.herokuapp.com/laporan/${id}`
       );
       console.log(dataDelete);
 
       if (dataDelete && dataDelete.status === 200) {
-        window.location.href = '/data-keluarga';
+        window.location.href = '/buat-laporan';
       }
     } catch (error) {
       throw error;
@@ -64,4 +65,4 @@ const DeleteConfirmation = (props) => {
     </>
   );
 };
-export default DeleteConfirmation;
+export default DeleteLaporan;

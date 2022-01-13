@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
-export const VaksinKeluargaContext = createContext();
+export const VaksinKeluargaById = createContext();
 const token = sessionStorage.getItem('token');
 
 axios.interceptors.request.use((config) => {
@@ -9,9 +9,12 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-export const getAxiosVaksin = async () => {
+export const getAxiosVaksinById = async (id) => {
   try {
-    const result = await axios.get('https://neimo-be.herokuapp.com/vaksin');
+    console.log(id);
+    const result = await axios.get(
+      `https://neimo-be.herokuapp.com/vaksin/${id}`
+    );
     return result.data;
   } catch (err) {
     console.log(err.response.status);
@@ -23,14 +26,14 @@ export const getAxiosVaksin = async () => {
   }
 };
 
-export const VaksinKeluargaProvider = (props) => {
-  const [dataVaksinKeluarga, setDataVaksinKeluarga] = useState([]);
+export const VaksinKeluargaByIdProvider = (props) => {
+  const [dataVaksinKeluargaById, setDataVaksinKeluargaById] = useState({});
 
   return (
-    <VaksinKeluargaContext.Provider
-      value={[dataVaksinKeluarga, setDataVaksinKeluarga]}
+    <VaksinKeluargaById.Provider
+      value={[dataVaksinKeluargaById, setDataVaksinKeluargaById]}
     >
       {props.children}
-    </VaksinKeluargaContext.Provider>
+    </VaksinKeluargaById.Provider>
   );
 };

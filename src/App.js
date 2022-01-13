@@ -29,6 +29,7 @@ import HalamanAkun from './container/HalamanAkun';
 import { ProfileProvider } from './context/ProfileContext';
 import { DataPositifProvider } from './context/DataPositifContext';
 import { LaporanProvider } from './context/DataLaporanContext';
+import { VaksinKeluargaByIdProvider } from './context/DataVaksinKeluargaById';
 
 function App() {
   return (
@@ -41,64 +42,85 @@ function App() {
                 <CountriesContextProvider>
                   <SidebarContextProvider>
                     <KeluargaContextProvider>
-                      <VaksinKeluargaProvider>
-                        <WargaRTProvider >
-                          <ProfileProvider>
-                            <DataPositifProvider>
-                              <LaporanProvider>
-                                <Routes>
-                                  <Route exact path='/' element={<LandingPage />}></Route>
-                                  <Route
-                                    path='/indonesia'
-                                    element={<IndonesiaData />}
-                                  ></Route>
-                                  <Route path='/signup' element={<Signup />}></Route>
-                                  <Route path='/login' element={<Login />}></Route>
-                                  <Route path='/logout' element={<Login />}></Route>
-                                  <Route path='/dashboard' element={<Dashoard />}></Route>
-                                  <Route
-                                    path='/data-keluarga'
-                                    element={<DataKeluarga />}
-                                  ></Route>
-                                  <Route
-                                    path='/data-positif'
-                                    element={<DataPositif />}
-                                  ></Route>
-                                  <Route
-                                    path='/data-positif/detail'
-                                    element={<DataPositifDetail />}
-                                  ></Route>
-                                  <Route
-                                    path='/data-vaksin'
-                                    element={<DataVaksin />}
-                                  ></Route>
-                                  <Route
-                                    path='/data-vaksin/detail'
-                                    element={<DataVaksinDetail />}
-                                  ></Route>
-                                  <Route
-                                    path='/data-laporan'
-                                    element={<DataLaporanRT />}
-                                  ></Route>
-                                  <Route
-                                    path='/data-laporan/detail'
-                                    element={<DataLaporanRTDetail />}
-                                  ></Route>
-                                  <Route
-                                    path='/buat-laporan'
-                                    element={<BuatLaporan />}
-                                  ></Route>
-                                  <Route
-                                    path='/profile'
-                                    element={<HalamanAkun />}
-                                  ></Route>
-                                  <Route path='*' element={<LandingPage />}></Route>
-                                </Routes>
-                              </LaporanProvider>
-                            </DataPositifProvider>
-                          </ProfileProvider>
-                        </WargaRTProvider>
-                      </VaksinKeluargaProvider>
+                      <VaksinKeluargaByIdProvider>
+                        <VaksinKeluargaProvider>
+                          <WargaRTProvider>
+                            <ProfileProvider>
+                              <DataPositifProvider>
+                                <LaporanProvider>
+                                  <Routes>
+                                    <Route
+                                      exact
+                                      path='/'
+                                      element={<LandingPage />}
+                                    ></Route>
+                                    <Route
+                                      path='/indonesia'
+                                      element={<IndonesiaData />}
+                                    ></Route>
+                                    <Route
+                                      path='/signup'
+                                      element={<Signup />}
+                                    ></Route>
+                                    <Route
+                                      path='/login'
+                                      element={<Login />}
+                                    ></Route>
+                                    <Route
+                                      path='/logout'
+                                      element={<Login />}
+                                    ></Route>
+                                    <Route
+                                      path='/dashboard'
+                                      element={<Dashoard />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-keluarga'
+                                      element={<DataKeluarga />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-positif'
+                                      element={<DataPositif />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-positif/detail'
+                                      element={<DataPositifDetail />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-vaksin'
+                                      element={<DataVaksin />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-vaksin/detail'
+                                      element={<DataVaksinDetail />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-laporan'
+                                      element={<DataLaporanRT />}
+                                    ></Route>
+                                    <Route
+                                      path='/data-laporan/detail'
+                                      element={<DataLaporanRTDetail />}
+                                    ></Route>
+                                    <Route
+                                      path='/buat-laporan'
+                                      element={<BuatLaporan />}
+                                    ></Route>
+                                    <Route
+                                      path='/profile'
+                                      element={<HalamanAkun />}
+                                    ></Route>
+                                    <Route
+                                      path='*'
+                                      element={<LandingPage />}
+                                    ></Route>
+                                  </Routes>
+                                </LaporanProvider>
+                              </DataPositifProvider>
+                            </ProfileProvider>
+                          </WargaRTProvider>
+                        </VaksinKeluargaProvider>
+                      </VaksinKeluargaByIdProvider>
                     </KeluargaContextProvider>
                   </SidebarContextProvider>
                 </CountriesContextProvider>

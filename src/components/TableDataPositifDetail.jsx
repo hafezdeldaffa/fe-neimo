@@ -1,16 +1,19 @@
 import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DataPositifContext, getAxiosPositif } from '../context/DataPositifContext';
+import {
+  DataPositifContext,
+  getAxiosPositif,
+} from '../context/DataPositifContext';
 import Loading from './Loading';
 
 const TableDataPositifDetail = () => {
-    let location = useLocation();
+  let location = useLocation();
 
     const queryString = require('query-string')
     const value = queryString.parse(location.search);
 
-    const [dataPositif, setDataPositif] = useContext(DataPositifContext)
-    const dataPositifRT = dataPositif ? dataPositif.dataRT : undefined
+  const [dataPositif, setDataPositif] = useContext(DataPositifContext);
+  const dataPositifRT = dataPositif ? dataPositif.dataRT : undefined;
 
     useEffect(() => {
         async function getData() {
@@ -76,6 +79,6 @@ const TableDataPositifDetail = () => {
             <Loading />
         )
     }
-}
+};
 
-export default TableDataPositifDetail
+export default TableDataPositifDetail;

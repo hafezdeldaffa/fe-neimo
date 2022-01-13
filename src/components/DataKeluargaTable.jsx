@@ -16,6 +16,7 @@ const DataKeluargaTable = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
   const [dataEdit, setDataEdit] = useState({});
+  const [dataDelete, setDataDelete] = useState({});
   const data = dataKeluarga ? dataKeluarga.anggotaKeluarga : undefined;
 
   useEffect(() => {
@@ -29,6 +30,11 @@ const DataKeluargaTable = () => {
   const editHandler = async (data) => {
     setShow(true);
     setDataEdit(data);
+  };
+
+  const deleteHandler = async (data) => {
+    setShowDelete(true);
+    setDataDelete(data);
   };
 
   if (data && data.length) {
@@ -66,7 +72,7 @@ const DataKeluargaTable = () => {
                         /
                         <AiIcons.AiOutlineDelete
                           style={{ color: '2647bd' }}
-                          onClick={() => setShowDelete()}
+                          onClick={() => deleteHandler(element)}
                         ></AiIcons.AiOutlineDelete>
                         {}
                       </td>
@@ -85,6 +91,7 @@ const DataKeluargaTable = () => {
         />
 
         <DeleteConfirmation
+          data={dataDelete._id}
           show={showDelete}
           onHide={() => setShowDelete(false)}
         />

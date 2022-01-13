@@ -11,6 +11,7 @@ axios.interceptors.request.use((config) => {
 
 export const getAxiosVaksinById = async (id) => {
   try {
+    console.log(id);
     const result = await axios.get(
       `https://neimo-be.herokuapp.com/vaksin?id=${id}`
     );

@@ -42,8 +42,8 @@ function App() {
                 <CountriesContextProvider>
                   <SidebarContextProvider>
                     <KeluargaContextProvider>
-                      <VaksinKeluargaProvider>
-                        <VaksinKeluargaByIdProvider>
+                      <VaksinKeluargaByIdProvider>
+                        <VaksinKeluargaProvider>
                           <WargaRTProvider>
                             <ProfileProvider>
                               <DataPositifProvider>
@@ -119,8 +119,8 @@ function App() {
                               </DataPositifProvider>
                             </ProfileProvider>
                           </WargaRTProvider>
-                        </VaksinKeluargaByIdProvider>
-                      </VaksinKeluargaProvider>
+                        </VaksinKeluargaProvider>
+                      </VaksinKeluargaByIdProvider>
                     </KeluargaContextProvider>
                   </SidebarContextProvider>
                 </CountriesContextProvider>

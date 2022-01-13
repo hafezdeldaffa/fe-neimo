@@ -9,10 +9,14 @@ const TableLaporanWarga = () => {
     const [dataWargaRT, setDataWargaRT] = useContext(WargaRTContext)
     const datakeluargaRT = dataWargaRT ? dataWargaRT.WargaRT : undefined
 
-    useEffect(async () => {
-        const axiosData = await getAxiosWarga()
-        setDataWargaRT(axiosData)
-    }, [])
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxiosWarga()
+            setDataWargaRT(axiosData)
+        }
+        getData()
+
+    }, [setDataWargaRT])
 
     if (datakeluargaRT && datakeluargaRT.length) {
         return (

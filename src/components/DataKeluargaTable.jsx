@@ -5,6 +5,12 @@ import FormEditAnggota from './FormEditAnggota';
 import DeleteConfirmation from './DeleteConfirmation';
 import { getAxios, KeluargaContext } from '../context/DataKeluargaContext';
 import Loading from './Loading';
+import axios from 'axios';
+import {
+  getAxiosVaksinById,
+  VaksinKeluargaById,
+} from '../context/DataVaksinKeluargaById';
+
 const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -18,9 +24,9 @@ const DataKeluargaTable = () => {
       setDataKeluarga(axiosData);
     }
     getData();
-  }, []);
+  }, [setDataKeluarga]);
 
-  const editHandler = (data) => {
+  const editHandler = async (data) => {
     setShow(true);
     setDataEdit(data);
   };
@@ -62,6 +68,7 @@ const DataKeluargaTable = () => {
                           style={{ color: '2647bd' }}
                           onClick={() => setShowDelete()}
                         ></AiIcons.AiOutlineDelete>
+                        {}
                       </td>
                     </tr>
                   );
@@ -72,6 +79,7 @@ const DataKeluargaTable = () => {
         </div>
         <FormEditAnggota
           data={dataEdit}
+          id={dataEdit._id}
           show={show}
           onHide={() => setShow(false)}
         />

@@ -17,8 +17,8 @@ function Sidebar() {
         <nav className={sidebar ? 'nav-menu mt-5' : 'nav-menu active mt-5'}>
           <ul className='nav-menu-items mt-5' onClick={showSidebar}>
             {routes.map((item, index) => {
-              if (index > 4) {
-                return (
+              return (
+                index > 4 ?
                   <li key={index} className={item.cName} value={index}>
                     <Link to={item.path}>
                       {item.icon}
@@ -33,8 +33,8 @@ function Sidebar() {
                       </span>
                     </Link>
                   </li>
-                );
-              }
+                  : null
+              );
             })}
           </ul>
         </nav>

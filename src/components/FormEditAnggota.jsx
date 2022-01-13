@@ -1,7 +1,27 @@
 import { Modal } from 'react-bootstrap';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import {
+  VaksinKeluargaById,
+  getAxiosVaksinById,
+} from '../context/DataVaksinKeluargaById';
+import axios from 'axios';
 
 const FormEditAnggota = (props) => {
-  console.log(props.data);
+  console.log(props.id);
+  let data = props.data;
+  const [dataVaksinKeluargaById, setDataVaksinKeluargaById] =
+    useContext(VaksinKeluargaById);
+  const id = props.id;
+
+  useEffect(() => {
+    if (id && props.show) {
+      async function getData() {
+        const axiosData = await getAxiosVaksinById(id);
+        setDataVaksinKeluargaById(axiosData);
+      }
+      getData();
+    }
+  }, [setDataVaksinKeluargaById]);
 
   return (
     <>
@@ -38,13 +58,24 @@ const FormEditAnggota = (props) => {
                   id='name'
                   aria-describedby='name'
                   placeholder='Nama Lengkap'
+                  value={data.nama}
                 />
                 {/* INPUT ROLE */}
                 <select
                   className='form-select mt-2'
                   aria-label='Default select example'
+                  defaultValue={
+                    data.role === 'Kepala Keluarga'
+                      ? 'Kepala Keluarga'
+                      : data.role === 'Anak'
+                      ? 'Anak'
+                      : data.role === 'Istri'
+                      ? 'Istri'
+                      : data.role === 'Anak'
+                      ? 'Anak'
+                      : 'Lain-lain'
+                  }
                 >
-                  <option>--Pilih Role--</option>
                   <option value='Kepala Keluarga'>Kepala Keluarga</option>
                   <option value='Istri'>Istri</option>
                   <option value='Anak'>Anak</option>
@@ -65,7 +96,7 @@ const FormEditAnggota = (props) => {
                         />
                       </div>
                       <div className='col-11'>
-                        <h5>Data Status Vaksin</h5>
+                        <h5>Data Vaksin</h5>
                       </div>
                     </div>
                     <div className='row  mt-2'>
@@ -134,12 +165,13 @@ const FormEditAnggota = (props) => {
                     </div>
                     <div className='row mt-3'>
                       <div className='col'>
-                        <div className='form-check '>
+                        <div className='form-check'>
                           <input
                             className='form-check-input'
                             type='radio'
                             name='flexRadioDefault'
                             id='positif'
+                            checked={data.statusCovid === 'Positif'}
                           />
                           <label className='form-check-label' htmlFor='positif'>
                             Positif
@@ -151,6 +183,9 @@ const FormEditAnggota = (props) => {
                           className='ms-2 d-flex flex-row-reverse justify-content-start'
                           type='date'
                           style={{ border: 'none' }}
+                          value={
+                            data.updatedAt !== null ? data.updatedAt : null
+                          }
                         />
                       </div>
                     </div>
@@ -161,7 +196,8 @@ const FormEditAnggota = (props) => {
                             className='form-check-input'
                             type='radio'
                             name='flexRadioDefault'
-                            id='positif'
+                            id='negatif'
+                            checked={data.statusCovid === 'Negatif'}
                           />
                           <label className='form-check-label' htmlFor='positif'>
                             Negatif

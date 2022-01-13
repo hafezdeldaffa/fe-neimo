@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const { register, handleSubmit } = useForm();
@@ -12,7 +12,11 @@ const Signup = () => {
       'https://neimo-be.herokuapp.com/auth/signup',
       data
     );
-    console.log(signup);
+    if (signup) {
+      window.location.href = '/login';
+    } else {
+      alert('Gagal untuk signup!');
+    }
   };
 
   return (
@@ -161,9 +165,12 @@ const Signup = () => {
               </button>
             </form>
             <p className='text-center mt-3 text-secondary'>
-              Sudah memiliki akun? 
-              <Link to={'/login'} className='text-dark fw-bold text-decoration-none'>
-                 Login
+              Sudah memiliki akun?
+              <Link
+                to={'/login'}
+                className='text-dark fw-bold text-decoration-none'
+              >
+                Login
               </Link>
             </p>
           </div>

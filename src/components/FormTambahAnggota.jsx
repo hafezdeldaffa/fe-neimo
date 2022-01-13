@@ -15,8 +15,6 @@ const FormTambahAnggota = () => {
         return config;
       });
 
-      console.log(data);
-
       await axios.post('https://neimo-be.herokuapp.com/anggota-keluarga', data);
       setShow(false);
     } catch (error) {

@@ -38,13 +38,12 @@ const FormTambahLaporan = (props) => {
         return config;
       });
 
-      const dataLogin = await axios.post(
+      const dataLaporan = await axios.post(
         'https://neimo-be.herokuapp.com/laporan',
         data
       );
-      console.log(dataLogin);
 
-      if (dataLogin && dataLogin.status === 201) {
+      if (dataLaporan && dataLaporan.status === 201) {
         window.location.href = '/buat-laporan';
       }
     } catch (error) {

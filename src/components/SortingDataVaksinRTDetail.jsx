@@ -1,16 +1,27 @@
 import { useState } from 'react';
-import {useLocation} from 'react-router-dom'
-const Sorting = () =>{
-    let {pathname} = useLocation()
-    // const params = {
-    //     category: obj.category,
-    //   };
+import { useLocation, useNavigate } from 'react-router-dom';
+
+const SortingDataVaksinRTDetail = () =>{
+    let location = useLocation()
+
+    const queryString = require('query-string')
+    const value = queryString.parse(location.search);
+  
+    const params = {
+      category: value.category,
+    };
+  
+    const categories =  ['Nama', 'Dosis 1', 'Tanggal Dosis 1', 'Dosis 2', 'Tanggal Dosis 2']
+  
+    const [category, setCategory] = useState(params.category || categories[2]);
     
-      const categories = pathname === "/data-positif" ? ['Nama', 'NoRumah', 'JumlahPositif', 'Lama'] : ['Nama', 'NoRumah', 'JumlahTervaksinasi'];
-    
-      const [category, setCategory] = useState(categories[2]);
-    return(
-        <div className='btn-group my-3'>
+    let navigate = useNavigate();
+    function handleClick() {
+      navigate(`${location.pathname}?id=${value.id}&category=${category}`);
+    }
+  
+    return (
+      <div className='btn-group my-3'>
         <img
           className='sort-img'
           data-bs-toggle='dropdown'
@@ -20,8 +31,7 @@ const Sorting = () =>{
         <ul className='dropdown-menu px-3'>
           <div className='form-check'>
             {categories.map((c, index) => (
-              <>
-                <li>
+                <li key={index}>
                   <input
                     className='form-check-input'
                     type='radio'
@@ -35,14 +45,13 @@ const Sorting = () =>{
                     {c}
                   </label>
                 </li>
-              </>
             ))}
           </div>
           <li>
             <button
               className='btn btn-sm btn-sort d-flex justify-content-center my-2'
               href='#'
-            //   onClick={handleClick}
+              onClick={handleClick}
             >
               Urutkan
             </button>
@@ -52,4 +61,4 @@ const Sorting = () =>{
     )
 }
 
-export default Sorting;
+export default SortingDataVaksinRTDetail;

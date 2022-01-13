@@ -6,9 +6,8 @@ import Loading from './Loading';
 const TableDataVaksinDetail = () => {
     let location = useLocation();
 
-    const loc = location.search.split('?');
-    const qs = require('qs');
-    const obj = qs.parse(loc[1]);
+    const queryString = require('query-string')
+    const value = queryString.parse(location.search);
 
     const [dataVaksinKeluarga, setdataVaksinKeluarga] = useContext(VaksinKeluargaContext)
     const dataVaksinRT = dataVaksinKeluarga ? dataVaksinKeluarga.vaksinRT : undefined
@@ -23,8 +22,28 @@ const TableDataVaksinDetail = () => {
 
     }, [setdataVaksinKeluarga])
 
+    const categories = ['Nama', 'Dosis 1', 'Tanggal Dosis 1', 'Dosis 2', 'Tanggal Dosis 2'];
+
+    const params = {
+        category: value.category,
+    };
+
+    const filter = {
+        category: params.category || categories[1],
+    };
+
+    console.log(filter)
+
     if (dataVaksinRT && dataVaksinRT.length) {
-        const detailData = dataVaksinRT.filter(e => e.keluargaId === obj.id)
+        const detailData = dataVaksinRT.filter(e => e.keluargaId === value.id)
+
+        const result = detailData.length === 1 ? detailData :
+            detailData.sort((a, b) => filter.category === "Nama" ? (a.nama > b.nama ? 1 : -1)
+                : filter.category === "Dosis 1" ? (a.dosis1 > b.dosis1 ? 1 : -1)
+                : filter.category === "Dosis 2" ? (a.dosis2 > b.dosis2 ? 1 : -1)
+                : filter.category === "Tanggal Dosis 1" ? (a.tanggalDosis1 > b.tanggalDosis1 ? 1 : -1)
+                : filter.category === "Tanggal Dosis 2" ? (a.tanggalDosis2 > b.tanggalDosis2 ? 1 : -1)
+                    : (a.updatedAt > b.updatedAt ? -1 : 1))
         return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">

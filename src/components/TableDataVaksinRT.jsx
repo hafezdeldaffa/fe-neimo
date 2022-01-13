@@ -19,12 +19,24 @@ const TableDataVaksinRT = () => {
 
     }, [setDataWargaRT])
 
-    // const [dataVaksinKeluarga] = useContext(VaksinKeluargaContext)
-    // const dataVaksinRT = dataVaksinKeluarga.vaksinRT
-    // console.log("ini")
-    // console.log(dataVaksinRT)
+    const loc = location.search.split("?")
+    const qs = require('qs');
+    const obj = qs.parse(loc[1])
+  
+    
+    const categories = ['Kepala Keluarga', 'No Rumah', 'Jumlah Tervaksinasi'];
+  
+    const params = {
+      category: obj.category,
+    };
+  
+    const filter = {
+        category:  params.category ||categories[1],
+    };
 
     if (datakeluargaRT && datakeluargaRT.length) {
+        datakeluargaRT.sort((a, b) => filter.category === "Kepala Keluarga" ? (a.namaKepalaKeluarga > b.namaKepalaKeluarga ? 1 : -1)
+                     : (a.nomorRumah > b.nomorRumah ? -1 : 1))
         return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -48,7 +60,7 @@ const TableDataVaksinRT = () => {
                                             <td>{element.nomorRumah}</td>
                                             {/* {vaksinn =  dataVaksinRT.filter(e => e.keluargaId === element._id)} */}
                                             <td>2</td>
-                                            <td><Link to={`${location.pathname}/detail?id=${element._id}`}><FiIcons.FiZoomIn></FiIcons.FiZoomIn></Link></td>
+                                            <td><Link to={location.pathname === '/data-vaksin/' ? `${location.pathname}detail?id=${element._id}` : `${location.pathname}/detail?id=${element._id}`} ><FiIcons.FiZoomIn></FiIcons.FiZoomIn></Link></td>
                                         </tr>
                                     )
                                 })}

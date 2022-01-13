@@ -27,7 +27,7 @@ const HalamanAkun = () => {
     function handleLogout() {
         window.sessionStorage.removeItem('token')
         window.sessionStorage.removeItem('role')
-        window.location.href = '/';
+        window.location.href = '/?status=BerhasilLogout';
     }
 
     if (akunUser && RT) {
@@ -107,7 +107,7 @@ const HalamanAkun = () => {
                         <div className="col-md-8">
                             {
                                 card === 'keluarga' ?
-                                    <div className="card mt-3 mt-md-0" style={{ width: '100%' }}>
+                                    <div className="card mt-3 mt-md-0 shadow-lg" style={{ width: '100%' }}>
                                         <div className="card-body">
                                             <h5 className="card-title fw-bold">PROFILE KELUARGA</h5>
                                             <hr />

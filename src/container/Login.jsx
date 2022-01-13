@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { Link} from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
+import GagalLoginModal from '../components/GagalLoginModal';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
+  const location = useLocation()
+  const loc = location.search.split('?')
+  const qs = require('qs');
+  const obj = qs.parse(loc[1]);
+  console.log(obj.status)
+  const [showModal, setShowModal] = useState(false);
 
   const onSubmit = async (data,e) => {
     e.preventDefault()
-    console.log("inie")
-    console.log(e)
     try {
       console.log(" ini data");
       console.log(data);
@@ -37,6 +42,10 @@ const Login = () => {
 
       console.log(role);
     } catch (error) {
+      console.log(error.response.status)
+      if(error.response.status === 401){
+        window.location.href = '/login?status=gagalLogin';
+      }
       throw error;
     }
   };
@@ -108,6 +117,13 @@ const Login = () => {
             </p>
           </div>
         </div>
+        {obj.status && obj.status === 'gagalLogin'?
+         
+         <GagalLoginModal
+          show={() => setShowModal(true) }
+        />
+         : null}
+        
       </div>
     </React.Fragment>
   );

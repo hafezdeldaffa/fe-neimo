@@ -1,15 +1,13 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import Searching from './Searching';
-import SortingDataPositifRT from './SortingDataPositifRT';
-import SortingDataPositifRTDetail from './SortingDataPositifRTDetail';
+import SortingDataVaksinRT from './SortingDataVaksinRT';
 
-const SortAndSearchPositifRT = () =>{    
+const SortAndSearchVaksinRT = () =>{
     return(
       <div className="container mt-4">
       <div className="row">
         <div className="col-2 col-md-6">
-           < SortingDataPositifRT />
+           < SortingDataVaksinRT />
         </div>
         <div className="col-10 col-md-6">
             <Searching />
@@ -19,4 +17,4 @@ const SortAndSearchPositifRT = () =>{
     )
 }
 
-export default SortAndSearchPositifRT;
+export default SortAndSearchVaksinRT;

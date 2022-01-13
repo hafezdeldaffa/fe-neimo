@@ -18,7 +18,24 @@ const TableLaporanWarga = () => {
 
     }, [setDataWargaRT])
 
+    const loc = location.search.split("?")
+    const qs = require('qs');
+    const obj = qs.parse(loc[1])
+  
+    
+    const categories = ['Kepala Keluarga', 'No Rumah', 'Jumlah laporan'];
+  
+    const params = {
+      category: obj.category,
+    };
+  
+    const filter = {
+        category:  params.category ||categories[0],
+    };
+
     if (datakeluargaRT && datakeluargaRT.length) {
+        datakeluargaRT.sort((a, b) => filter.category === "Kepala Keluarga" ? (a.namaKepalaKeluarga > b.namaKepalaKeluarga ? 1 : -1)
+                     : (a.nomorRumah > b.nomorRumah ? -1 : 1))
         return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -41,7 +58,7 @@ const TableLaporanWarga = () => {
                                             <td>{element.namaKepalaKeluarga}</td>
                                             <td>{element.nomorRumah}</td>
                                             <td>2</td>
-                                            <td><Link to={`${location.pathname}/detail?id=${element._id}`}><FiIcons.FiZoomIn></FiIcons.FiZoomIn></Link></td>
+                                            <td><Link to={location.pathname === '/data-laporan/' ? `${location.pathname}detail?id=${element._id}` : `${location.pathname}/detail?id=${element._id}`}><FiIcons.FiZoomIn></FiIcons.FiZoomIn></Link></td>
                                         </tr>
                                     )
                                 })}

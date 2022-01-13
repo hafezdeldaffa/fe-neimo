@@ -6,25 +6,41 @@ import Loading from './Loading';
 const TableDataPositifDetail = () => {
     let location = useLocation();
 
-    const loc = location.search.split('?');
-    const qs = require('qs');
-    const obj = qs.parse(loc[1]);
+    const queryString = require('query-string')
+    const value = queryString.parse(location.search);
 
     const [dataPositif, setDataPositif] = useContext(DataPositifContext)
     const dataPositifRT = dataPositif ? dataPositif.dataRT : undefined
 
     useEffect(() => {
-        async function getData(){
-        const axiosData = await getAxiosPositif()
-        setDataPositif(axiosData)
+        async function getData() {
+            const axiosData = await getAxiosPositif()
+            setDataPositif(axiosData)
         }
         getData()
     }, [setDataPositif])
 
+    const categories = ['Nama', 'Status', 'Tanggal'];
+
+    const params = {
+        category: value.category,
+    };
+
+    const filter = {
+        category: params.category || categories[1],
+    };
+
+    console.log(filter)
+
 
     if (dataPositifRT && dataPositifRT.length) {
-        const detailData = dataPositifRT.filter(e => e.keluargaId === obj.id)
-        console.log(detailData)
+        const detailData = dataPositifRT.filter(e => e.keluargaId === value.id)
+
+        const result = detailData.length === 1 ? detailData :
+            detailData.sort((a, b) => filter.category === "Nama" ? (a.nama > b.nama ? 1 : -1)
+                : filter.category === "Status" ? (a.statusCovid > b.statusCovid ? -1 : 1)
+                    : (a.updatedAt > b.updatedAt ? -1 : 1))
+
         return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -42,10 +58,10 @@ const TableDataPositifDetail = () => {
                                 {detailData.map((element, index) => {
                                     return (
                                         <tr className="border-1" key={index}>
-                                            <th scope="row" className=" d-none d-sm-block">1{index+1}</th>
+                                            <th scope="row" className=" d-none d-sm-block">{index + 1}</th>
                                             <td>{element.nama}</td>
                                             <td>{element.statusCovid}</td>
-                                            <td>{element.updatedAt.substr(0,10)}</td>
+                                            <td>{element.updatedAt.substr(0, 10)}</td>
                                         </tr>
                                     )
                                 })}

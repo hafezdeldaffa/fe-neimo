@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Login from './Login';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import SortAndSearchPositifRT from '../components/SortAndSearchDataPositifRT';
 import TableDataPositifDetail from '../components/TableDataPositifDetail';
+import SortAndSearchPositifRTDetail from '../components/SortAndSearchDataPositifRTDetail';
 const DataPositifDetail = () => {
   const [sidebar] = useContext(SidebarContext);
   const token = sessionStorage.getItem('token');
@@ -36,7 +36,7 @@ const DataPositifDetail = () => {
                 </h2>
               </div>
             </div>
-            <SortAndSearchPositifRT></SortAndSearchPositifRT>
+            <SortAndSearchPositifRTDetail></SortAndSearchPositifRTDetail>
             <TableDataPositifDetail />
           </div>
         </div>

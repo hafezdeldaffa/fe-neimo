@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar';
 import SortAndSearchPositifRT from '../components/SortAndSearchDataPositifRT';
 import TableDataVaksinDetail from '../components/TableDataVaksinDetail';
 import Login from './Login';
+import SortAndSearchVaksinRTDetail from '../components/SortAndSearchDataVaksinRTDetail';
 const DataVaksinDetail = () => {
   const [sidebar] = useContext(SidebarContext);
 
@@ -35,7 +36,7 @@ const DataVaksinDetail = () => {
                 <h2 className='ms-3 ms-md-0'>Data Tervaksinasi di RT / A51</h2>
               </div>
             </div>
-            <SortAndSearchPositifRT></SortAndSearchPositifRT>
+            <SortAndSearchVaksinRTDetail />
             <TableDataVaksinDetail />
           </div>
         </div>

@@ -16,7 +16,6 @@ const Signup = () => {
     console.log(signup);
   };
 
-  console.log(show)
   return (
     <React.Fragment>
       <Navbar />
@@ -31,9 +30,9 @@ const Signup = () => {
               dapat menggunakan aplikasi Neimo.
             </p>
           </div>
-          <div className='col-lg-6 py-4'>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className='mb-3'>
+          <div className="col-lg-6 py-4">
+            <form onSubmit={handleSubmit(onSubmit)} className={show === true ? 'mb-5' : null}>
+              <div className="mb-3">
                 <input
                   placeholder='Nama Lengkap Kepala Keluarga'
                   type='text'
@@ -162,7 +161,7 @@ const Signup = () => {
                 Daftar
               </button>
             </form>
-            <p className='text-center mt-3 text-secondary'>
+            <p className={show === true ? 'text-center mt-3 text-secondary mb-5' : 'text-center mt-3 text-secondary'}>
               Sudah memiliki akun? 
               <Link to={'/login'} className='text-dark fw-bold text-decoration-none'>
                  Login

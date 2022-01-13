@@ -1,7 +1,7 @@
 
 const ServiceInfoDashboard = () => {
     return (
-        <div className="container d-flex justify-content-center mt-4">
+        <div className="container d-flex justify-content-center mt-1">
             <div className="row">
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>

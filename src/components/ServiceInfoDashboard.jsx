@@ -6,60 +6,72 @@ const ServiceInfoDashboard = () => {
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>
                         <div className="card-body">
-                            <div className="card  rounded-circle bg-secondary p-3" style={{width: '70px', height: '70px'}}>
+                        <a href="https://www.wargabantuwarga.com/provinces?kebutuhan=Ambulans" rel="noopener noreferrer" target="_blank">
+                            <div className="card  rounded-circle bg-serviceCard p-3" style={{width: '70px', height: '70px'}}>
                                 <img src="/images/ambulans.png" alt="" />
                             </div>
-                            <p className='text-center' style={{marginBottom: '-10px'}}>ambulans</p>
+                            </a>
+                            <p className='text-center' style={{marginBottom: '-10px'}}>Ambulans</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>
                         <div className="card-body">
-                            <div className="card  rounded-circle bg-secondary p-3 " style={{width: '70px', height: '70px'}}>
+                             <a href="https://yankes.kemkes.go.id/app/siranap/" rel="noopener noreferrer" target="_blank">
+                            <div className="card  rounded-circle bg-serviceCard p-3 " style={{width: '70px', height: '70px'}}>
                                 <img src="/images/hospital.png" alt="" />
                             </div>
-                            <p className='text-center' style={{marginBottom: '-10px'}}>fakses</p>
+                            </a>
+                            <p className='text-center' style={{marginBottom: '-10px'}}>Fakses</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>
                         <div className="card-body">
-                            <div className="card  rounded-circle bg-secondary p-3 " style={{width: '70px', height: '70px'}}>
+                             <a href="https://www.pedulilindungi.id/" rel="noopener noreferrer" target="_blank">
+                            <div className="card  rounded-circle bg-serviceCard p-3 " style={{width: '70px', height: '70px'}}>
                                 <img src="/images/vaksin.png" alt="" />
                             </div>
-                            <p className='text-center' style={{marginBottom: '-10px'}}>vaksin</p>
+                            </a>
+                            <p className='text-center' style={{marginBottom: '-10px'}}>Vaksin</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>
                         <div className="card-body">
-                            <div className="card  rounded-circle bg-secondary p-3 " style={{width: '70px', height: '70px'}}>
+                             <a href="https://www.wargabantuwarga.com/provinces?kebutuhan=Oksigen" rel="noopener noreferrer" target="_blank">
+                            <div className="card  rounded-circle bg-serviceCard p-3 " style={{width: '70px', height: '70px'}}>
                                 <img src="/images/oksigen.png" alt="" />
                             </div>
-                            <p className='text-center' style={{marginBottom: '-10px'}}>oksigen</p>
+                            </a>
+                            <p className='text-center' style={{marginBottom: '-10px'}}>Oksigen</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>
-                        <div className="card-body">
-                            <div className="card  rounded-circle bg-secondary p-3 " style={{width: '70px', height: '70px'}}>
+                        <div className="card-body ">
+                        <a href="https://www.wargabantuwarga.com/provinces?kebutuhan=Donor%20plasma" rel="noopener noreferrer" target="_blank">
+                            <div className="card  rounded-circle bg-serviceCard p-3 " style={{width: '70px', height: '70px'}}>
                                 <img src="/images/plasma.png" alt="" />
                             </div>
-                            <p className='text-center' style={{marginBottom: '-10px'}}>plasma</p>
+                            </a>
+                            <p className='text-center' style={{marginBottom: '-10px'}}>Plasma</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-4 col-md-2 px-2 mt-3">
                     <div className="card border-0 shadow-lg" style={{width: '7rem'}}>
                         <div className="card-body">
-                            <div className="card  rounded-circle bg-secondary p-3 " style={{width: '70px', height: '70px'}}>
+                             <a href="https://www.wargabantuwarga.com/kontak-darurat" rel="noopener noreferrer" target="_blank">
+                            <div className="card  rounded-circle bg-serviceCard p-3 " style={{width: '70px', height: '70px'}}>
                                 <img src="/images/phone.png" alt="" />
                             </div>
-                            <p className='text-center' style={{marginBottom: '-10px'}}>bantuan</p>
+                            </a>
+                            <p className='text-center' style={{marginBottom: '-10px'}}>Bantuan</p>
                         </div>
                     </div>
                 </div>

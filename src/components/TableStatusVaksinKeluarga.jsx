@@ -14,7 +14,6 @@ const TableStatusVaksinKeluarga = () => {
 
     }, [setdataVaksinKeluarga])
 
-
     if (data && data.length) {
         return (
             <div className="container">

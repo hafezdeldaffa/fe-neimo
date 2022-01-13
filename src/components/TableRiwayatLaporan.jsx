@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import * as AiIcons from 'react-icons/ai'
 import { getAxios, KeluargaContext } from "../context/DataKeluargaContext"
 import { getAxiosLaporan, LaporanContext } from "../context/DataLaporanContext"
-import DeleteConfirmation from "./DeleteConfirmation"
+import DeleteLaporan from "./DeleteLaporan"
 import Loading from "./Loading"
 const TableRiwayatLaporan = () => {
   const [showDelete, setShowDelete] = useState(false);

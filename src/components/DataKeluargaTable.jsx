@@ -6,10 +6,6 @@ import DeleteConfirmation from './DeleteConfirmation';
 import { getAxios, KeluargaContext } from '../context/DataKeluargaContext';
 import Loading from './Loading';
 import axios from 'axios';
-import {
-  getAxiosVaksinById,
-  VaksinKeluargaById,
-} from '../context/DataVaksinKeluargaById';
 
 const DataKeluargaTable = () => {
   const [show, setShow] = useState(false);
@@ -18,6 +14,8 @@ const DataKeluargaTable = () => {
   const [dataEdit, setDataEdit] = useState({});
   const [dataDelete, setDataDelete] = useState({});
   const data = dataKeluarga ? dataKeluarga.anggotaKeluarga : undefined;
+  const [dataVaksin, setDataVaksin] = useState({});
+  const token = sessionStorage.getItem('token');
 
   useEffect(() => {
     async function getData() {
@@ -28,8 +26,26 @@ const DataKeluargaTable = () => {
   }, [setDataKeluarga]);
 
   const editHandler = async (data) => {
-    setShow(true);
     setDataEdit(data);
+    axios.interceptors.request.use((config) => {
+      config.headers.authorization = `Bearer ${token}`;
+      return config;
+    });
+    const id = data._id;
+    try {
+      const getVaksin = await axios.get(
+        `https://neimo-be.herokuapp.com/vaksin/${id}`
+      );
+      console.log(getVaksin);
+      setDataVaksin(getVaksin);
+    } catch (err) {
+      if (err.response.status === 404) {
+        return 'kosong';
+      } else if (err.response.status === 403) {
+        window.location.href = '/login';
+      }
+    }
+    setShow(true);
   };
 
   const deleteHandler = async (data) => {
@@ -85,7 +101,7 @@ const DataKeluargaTable = () => {
         </div>
         <FormEditAnggota
           data={dataEdit}
-          id={dataEdit._id}
+          dataVaksin={dataVaksin}
           show={show}
           onHide={() => setShow(false)}
         />

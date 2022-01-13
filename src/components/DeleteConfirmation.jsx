@@ -2,8 +2,6 @@ import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 const DeleteConfirmation = (props) => {
-  console.log(props.data);
-
   const { register, handleSubmit } = useForm();
   const token = sessionStorage.getItem('token');
 

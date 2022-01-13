@@ -15,8 +15,13 @@ const FormTambahAnggota = () => {
         return config;
       });
 
-      await axios.post('https://neimo-be.herokuapp.com/anggota-keluarga', data);
-      setShow(false);
+      const result = await axios.post(
+        'https://neimo-be.herokuapp.com/anggota-keluarga',
+        data
+      );
+      if (result) {
+        window.location.href = '/data-keluarga';
+      }
     } catch (error) {
       throw error;
     }
@@ -106,7 +111,7 @@ const FormTambahAnggota = () => {
                           className='form-select'
                           aria-label='Default select example'
                           defaultValue={'Belum Vaksin'}
-                          {...register('dosis1')}
+                          {...register('dosis1', { required: true })}
                         >
                           <option>Jenis Vaksin</option>
                           <option value='Belum Vaksin'>Belum Vaksin</option>
@@ -132,7 +137,7 @@ const FormTambahAnggota = () => {
                           className='form-select'
                           aria-label='Default select example'
                           defaultValue={'Belum Vaksin'}
-                          {...register('dosis2')}
+                          {...register('dosis2', { required: true })}
                         >
                           <option>Jenis Vaksin</option>
                           <option value='Belum Vaksin'>Belum Vaksin</option>
@@ -177,8 +182,8 @@ const FormTambahAnggota = () => {
                             type='radio'
                             name='flexRadioDefault'
                             id='positif'
-                            value={'Positif'}
-                            {...register('statusCovid')}
+                            value='Positif'
+                            {...register('statusCovid', { required: true })}
                           />
                           <label className='form-check-label' htmlFor='positif'>
                             Positif
@@ -201,8 +206,8 @@ const FormTambahAnggota = () => {
                             type='radio'
                             name='flexRadioDefault'
                             id='negatif'
-                            value={'Negatif'}
-                            {...register('statusCovid')}
+                            value='Negatif'
+                            {...register('statusCovid', { required: true })}
                           />
                           <label className='form-check-label' htmlFor='positif'>
                             Negatif

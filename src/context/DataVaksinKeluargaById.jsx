@@ -13,7 +13,7 @@ export const getAxiosVaksinById = async (id) => {
   try {
     console.log(id);
     const result = await axios.get(
-      `https://neimo-be.herokuapp.com/vaksin?id=${id}`
+      `https://neimo-be.herokuapp.com/vaksin/${id}`
     );
     return result.data;
   } catch (err) {

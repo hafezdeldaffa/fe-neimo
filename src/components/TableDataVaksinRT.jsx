@@ -4,11 +4,15 @@ import * as FiIcons from 'react-icons/fi'
 import { useContext, useEffect } from 'react';
 import { getAxiosWarga, WargaRTContext } from '../context/WargaRTContext';
 import Loading from './Loading';
+import { getAxiosVaksin, VaksinKeluargaContext } from '../context/DataVaksinKeluaga';
 const TableDataVaksinRT = () => {
     let location = useLocation()
 
     const [dataWargaRT, setDataWargaRT] = useContext(WargaRTContext)
     const datakeluargaRT = dataWargaRT ? dataWargaRT.WargaRT : undefined
+
+    const [dataVaksinKeluarga, setdataVaksinKeluarga] = useContext(VaksinKeluargaContext)
+    const dataVaksinRT = dataVaksinKeluarga ? dataVaksinKeluarga.vaksinRT : undefined
 
     useEffect(() => {
         async function getData() {
@@ -18,6 +22,15 @@ const TableDataVaksinRT = () => {
         getData()
 
     }, [setDataWargaRT])
+
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxiosVaksin()
+            setdataVaksinKeluarga(axiosData)
+        }
+        getData()
+
+    }, [setdataVaksinKeluarga])
 
     const loc = location.search.split("?")
     const qs = require('qs');
@@ -34,7 +47,7 @@ const TableDataVaksinRT = () => {
         category:  params.category ||categories[1],
     };
 
-    if (datakeluargaRT && datakeluargaRT.length) {
+    if (datakeluargaRT && datakeluargaRT.length && dataVaksinRT && dataVaksinRT.length) {
         datakeluargaRT.sort((a, b) => filter.category === "Kepala Keluarga" ? (a.namaKepalaKeluarga > b.namaKepalaKeluarga ? 1 : -1)
                      : (a.nomorRumah > b.nomorRumah ? -1 : 1))
         return (
@@ -53,13 +66,22 @@ const TableDataVaksinRT = () => {
                             </thead>
                             <tbody>
                                 {datakeluargaRT.map((element, index) => {
+                                     let a = 0
+                                     dataVaksinRT.map((e,i)=>{
+                                                     return(
+                                                          e.keluargaId === element._id? 
+                                                          a=a+1 
+                                                         : 0
+                                                     )
+                                                     
+                                     })
                                     return (
                                         <tr className="border-1" key={index}>
                                             <th scope="row" className=" d-none d-sm-block">{index + 1}</th>
                                             <td>{element.namaKepalaKeluarga}</td>
                                             <td>{element.nomorRumah}</td>
                                             {/* {vaksinn =  dataVaksinRT.filter(e => e.keluargaId === element._id)} */}
-                                            <td>2</td>
+                                            <td>{a}</td>
                                             <td><Link to={location.pathname === '/data-vaksin/' ? `${location.pathname}detail?id=${element._id}` : `${location.pathname}/detail?id=${element._id}`} ><FiIcons.FiZoomIn></FiIcons.FiZoomIn></Link></td>
                                         </tr>
                                     )

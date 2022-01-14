@@ -7,14 +7,9 @@ import CardCaseRT from '../components/CardCasesRT';
 import { getDailyCases, IndonesiaDailyContext } from '../context/IndonesiaDailyContext';
 import ChartIndo from '../components/ChartIndo';
 import Loading from '../components/Loading';
-import Login from './Login';
 
 const Dashoard = () => {
-  const token = sessionStorage.getItem('token');
-  if (!token) {
-    return <Login />;
-  }
-
+  
   const [sidebar] = useContext(SidebarContext);
   const [DailyCases, setDailyCases] = useContext(IndonesiaDailyContext);
 

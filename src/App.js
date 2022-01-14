@@ -6,12 +6,7 @@ import './styles/css/style.css';
 import IndonesiaData from './container/IndonesiaData';
 import Dashoard from './container/Dashboard';
 import DataKeluarga from './container/DataKeluarga';
-
-import { IndoContextProvider } from './context/IndonesiaContext';
-import { ProvinceContextProvider } from './context/ProvinceContext';
 import { IndonesiaDailyContextProvider } from './context/IndonesiaDailyContext';
-import { CountriesContextProvider } from './context/CountriesContext';
-import { GlobalContextProvider } from './context/GlobalContext';
 import { SidebarContextProvider } from './context/SidebarContext';
 import Login from './container/Login';
 import Signup from './container/Signup';
@@ -35,99 +30,91 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
-        <GlobalContextProvider>
-          <IndoContextProvider>
-            <ProvinceContextProvider>
-              <IndonesiaDailyContextProvider>
-                <CountriesContextProvider>
-                  <SidebarContextProvider>
-                    <KeluargaContextProvider>
-                      <VaksinKeluargaByIdProvider>
-                        <VaksinKeluargaProvider>
-                          <WargaRTProvider>
-                            <ProfileProvider>
-                              <DataPositifProvider>
-                                <LaporanProvider>
-                                  <Routes>
-                                    <Route
-                                      exact
-                                      path='/'
-                                      element={<LandingPage />}
-                                    ></Route>
-                                    <Route
-                                      path='/indonesia'
-                                      element={<IndonesiaData />}
-                                    ></Route>
-                                    <Route
-                                      path='/signup'
-                                      element={<Signup />}
-                                    ></Route>
-                                    <Route
-                                      path='/login'
-                                      element={<Login />}
-                                    ></Route>
-                                    <Route
-                                      path='/logout'
-                                      element={<Login />}
-                                    ></Route>
-                                    <Route
-                                      path='/dashboard'
-                                      element={<Dashoard />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-keluarga'
-                                      element={<DataKeluarga />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-positif'
-                                      element={<DataPositif />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-positif/detail'
-                                      element={<DataPositifDetail />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-vaksin'
-                                      element={<DataVaksin />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-vaksin/detail'
-                                      element={<DataVaksinDetail />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-laporan'
-                                      element={<DataLaporanRT />}
-                                    ></Route>
-                                    <Route
-                                      path='/data-laporan/detail'
-                                      element={<DataLaporanRTDetail />}
-                                    ></Route>
-                                    <Route
-                                      path='/buat-laporan'
-                                      element={<BuatLaporan />}
-                                    ></Route>
-                                    <Route
-                                      path='/profile'
-                                      element={<HalamanAkun />}
-                                    ></Route>
-                                    <Route
-                                      path='*'
-                                      element={<LandingPage />}
-                                    ></Route>
-                                  </Routes>
-                                </LaporanProvider>
-                              </DataPositifProvider>
-                            </ProfileProvider>
-                          </WargaRTProvider>
-                        </VaksinKeluargaProvider>
-                      </VaksinKeluargaByIdProvider>
-                    </KeluargaContextProvider>
-                  </SidebarContextProvider>
-                </CountriesContextProvider>
-              </IndonesiaDailyContextProvider>
-            </ProvinceContextProvider>
-          </IndoContextProvider>
-        </GlobalContextProvider>
+        <IndonesiaDailyContextProvider>
+          <SidebarContextProvider>
+            <KeluargaContextProvider>
+              <VaksinKeluargaByIdProvider>
+                <VaksinKeluargaProvider>
+                  <WargaRTProvider>
+                    <ProfileProvider>
+                      <DataPositifProvider>
+                        <LaporanProvider>
+                          <Routes>
+                            <Route
+                              exact
+                              path='/'
+                              element={<LandingPage />}
+                            ></Route>
+                            <Route
+                              path='/indonesia'
+                              element={<IndonesiaData />}
+                            ></Route>
+                            <Route
+                              path='/signup'
+                              element={<Signup />}
+                            ></Route>
+                            <Route
+                              path='/login'
+                              element={<Login />}
+                            ></Route>
+                            <Route
+                              path='/logout'
+                              element={<Login />}
+                            ></Route>
+                            <Route
+                              path='/dashboard'
+                              element={<Dashoard />}
+                            ></Route>
+                            <Route
+                              path='/data-keluarga'
+                              element={<DataKeluarga />}
+                            ></Route>
+                            <Route
+                              path='/data-positif'
+                              element={<DataPositif />}
+                            ></Route>
+                            <Route
+                              path='/data-positif/detail'
+                              element={<DataPositifDetail />}
+                            ></Route>
+                            <Route
+                              path='/data-vaksin'
+                              element={<DataVaksin />}
+                            ></Route>
+                            <Route
+                              path='/data-vaksin/detail'
+                              element={<DataVaksinDetail />}
+                            ></Route>
+                            <Route
+                              path='/data-laporan'
+                              element={<DataLaporanRT />}
+                            ></Route>
+                            <Route
+                              path='/data-laporan/detail'
+                              element={<DataLaporanRTDetail />}
+                            ></Route>
+                            <Route
+                              path='/buat-laporan'
+                              element={<BuatLaporan />}
+                            ></Route>
+                            <Route
+                              path='/profile'
+                              element={<HalamanAkun />}
+                            ></Route>
+                            <Route
+                              path='*'
+                              element={<LandingPage />}
+                            ></Route>
+                          </Routes>
+                        </LaporanProvider>
+                      </DataPositifProvider>
+                    </ProfileProvider>
+                  </WargaRTProvider>
+                </VaksinKeluargaProvider>
+              </VaksinKeluargaByIdProvider>
+            </KeluargaContextProvider>
+          </SidebarContextProvider>
+        </IndonesiaDailyContextProvider>
       </BrowserRouter>
     </React.Fragment>
   );

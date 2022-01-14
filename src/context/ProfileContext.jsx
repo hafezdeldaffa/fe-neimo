@@ -13,7 +13,6 @@ export const getAxiosPofile = async () => {
 
   try {
     const result = await axios.get('https://neimo-be.herokuapp.com/profile');
-    console.log(result.data)
     return result.data
   } catch (err) {
     if (err.response.status === 404) {

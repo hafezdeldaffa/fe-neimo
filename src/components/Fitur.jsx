@@ -8,7 +8,7 @@ const Fitur = () => {
             <p>
               {' '}
               Neimo memberikan kemudahan bagi kepala RT serta masyarakat dalam
-              pelacakan COVID-19 di lingkungan sekitar. Fitur yang ditawarkan
+              pelacakan dan pelaporan COVID-19 di lingkungan sekitar. Fitur yang ditawarkan
               Neimo meliputi :
             </p>
             <ul>

@@ -33,9 +33,6 @@ const TableDataPositifDetail = () => {
         category: params.category || categories[1],
     };
 
-    console.log(filter)
-
-
     if (dataPositifRT && dataPositifRT.length) {
         const detailData = dataPositifRT.filter(e => e.keluargaId === value.id)
 
@@ -58,7 +55,7 @@ const TableDataPositifDetail = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {detailData.map((element, index) => {
+                                {result.map((element, index) => {
                                     return (
                                         <tr className="border-1" key={index}>
                                             <th scope="row" className=" d-none d-sm-block">{index + 1}</th>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import * as FiIcons from "react-icons/fi"
 import { useLocation } from "react-router-dom";
 import { getAxios, KeluargaContext } from "../context/DataKeluargaContext";
@@ -20,6 +20,15 @@ const TableLaporanWargaDetail = () => {
     const [dataKeluarga, setDataKeluarga] = useContext(KeluargaContext);
     const dataAnggota = dataKeluarga ? dataKeluarga.anggotaRT : undefined
 
+    const [laporanById, setLaporanById] = useState([])
+    const [anggotaById, setAnggotaById] = useState([])
+
+    const addHandler = async (data1, data2) => {
+        setModalOpen(true);
+        setLaporanById(data1)
+        setAnggotaById(data2);
+    };
+
     useEffect(() => {
         async function getData() {
             const axiosData = await getAxiosLaporan()
@@ -40,6 +49,7 @@ const TableLaporanWargaDetail = () => {
 
     if (dataLaporanRT && dataLaporanRT.length && dataAnggota && dataAnggota.length) {
         const detailLaporan = dataLaporanRT.filter(e => e.keluargaId === obj.id)
+        const result = detailLaporan.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1)
         return (
             <div className="container mt-5">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -55,10 +65,10 @@ const TableLaporanWargaDetail = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {detailLaporan.map((element, index) => {
+                                {result.map((element, index) => {
                                     return (
                                         <tr className="border-1" key={index}>
-                                            {dataAnggota.map((e, index) => {
+                                            {dataAnggota.map((e, i) => {
                                                 return (
                                                     element.anggotaId === e._id ?
                                                         <>
@@ -66,13 +76,7 @@ const TableLaporanWargaDetail = () => {
                                                             <td>{e.nama}</td>
                                                             <td>{e.role}</td>
                                                             <td>{element.createdAt.substr(0, 10)}</td>
-                                                            <td><FiIcons.FiZoomIn onClick={() => { setModalOpen(true) }} ></FiIcons.FiZoomIn></td>
-                                                            <DetailLaporan
-                                                                show={modalOpen}
-                                                                dataLaporan={element}
-                                                                dataAnggota={e}
-                                                                onHide={() => setModalOpen(false)}
-                                                            />
+                                                            <td><FiIcons.FiZoomIn onClick={() => { addHandler(element, e) }} ></FiIcons.FiZoomIn></td>
                                                         </>
 
                                                         : null
@@ -87,6 +91,12 @@ const TableLaporanWargaDetail = () => {
                     </div>
                 </div>
 
+                <DetailLaporan
+                    show={modalOpen}
+                    dataLaporan={laporanById}
+                    dataAnggota={anggotaById}
+                    onHide={() => setModalOpen(false)}
+                />
             </div>
         )
     } else {

@@ -3,11 +3,15 @@ import * as FiIcons from "react-icons/fi"
 import { useContext, useEffect } from 'react';
 import { getAxiosWarga, WargaRTContext } from '../context/WargaRTContext';
 import Loading from './Loading';
+import { DataPositifContext, getAxiosPositif } from '../context/DataPositifContext';
 const TableDataPositifRT = () => {
     let location = useLocation()
-    
+
     const [dataWargaRT, setDataWargaRT] = useContext(WargaRTContext)
     const datakeluargaRT = dataWargaRT ? dataWargaRT.WargaRT : undefined
+
+    const [dataPositif, setDataPositif] = useContext(DataPositifContext);
+    const dataPositifRT = dataPositif ? dataPositif.dataRT : undefined;
 
     useEffect(() => {
         async function getData() {
@@ -17,24 +21,32 @@ const TableDataPositifRT = () => {
         getData()
     }, [setDataWargaRT])
 
+    useEffect(() => {
+        async function getData() {
+            const axiosData = await getAxiosPositif()
+            setDataPositif(axiosData)
+        }
+        getData()
+    }, [setDataPositif])
+
     const loc = location.search.split("?")
     const qs = require('qs');
     const obj = qs.parse(loc[1])
-  
-    
-    const categories = ['Kepala Keluarga', 'No Rumah', 'Jumlah Positif'];
-  
-    const params = {
-      category: obj.category,
-    };
-  
-    const filter = {
-        category:  params.category ||categories[1],
-    };              
 
-    if (datakeluargaRT && datakeluargaRT.length) { 
+
+    const categories = ['Kepala Keluarga', 'No Rumah', 'Jumlah Positif'];
+
+    const params = {
+        category: obj.category,
+    };
+
+    const filter = {
+        category: params.category || categories[1],
+    };
+
+    if (datakeluargaRT && datakeluargaRT.length && dataPositifRT && dataPositifRT.length) {
         datakeluargaRT.sort((a, b) => filter.category === "Kepala Keluarga" ? (a.namaKepalaKeluarga > b.namaKepalaKeluarga ? 1 : -1)
-                     : (a.nomorRumah > b.nomorRumah ? -1 : 1))
+            : (a.nomorRumah > b.nomorRumah ? -1 : 1))
         return (
             <div className="container">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -51,12 +63,21 @@ const TableDataPositifRT = () => {
                             </thead>
                             <tbody>
                                 {datakeluargaRT.map((element, index) => {
+                                    let a = 0
+                                    dataPositifRT.map((e, i) => {
+                                        return (
+                                            e.keluargaId === element._id ?
+                                                a = a + 1
+                                                : 0
+                                        )
+
+                                    })
                                     return (
                                         <tr className="border-1" key={index}>
                                             <th scope="row" className=" d-none d-sm-block">{index + 1}</th>
                                             <td>{element.namaKepalaKeluarga}</td>
                                             <td>{element.nomorRumah}</td>
-                                            <td>2</td>
+                                            <td>{a}</td>
                                             <td>
                                                 <Link to={location.pathname === '/data-positif/' ? `${location.pathname}detail?id=${element._id}` : `${location.pathname}/detail?id=${element._id}`} key={index}>
                                                     <FiIcons.FiZoomIn></FiIcons.FiZoomIn>

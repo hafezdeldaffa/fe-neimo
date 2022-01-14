@@ -18,7 +18,6 @@ const DeleteLaporan = (props) => {
       const dataDelete = await axios.delete(
         `https://neimo-be.herokuapp.com/laporan/${id}`
       );
-      console.log(dataDelete);
 
       if (dataDelete && dataDelete.status === 200) {
         window.location.href = '/buat-laporan';

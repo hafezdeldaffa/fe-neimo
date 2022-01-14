@@ -11,7 +11,6 @@ const TableDataVaksinDetail = () => {
 
     const [dataVaksinKeluarga, setdataVaksinKeluarga] = useContext(VaksinKeluargaContext)
     const dataVaksinRT = dataVaksinKeluarga ? dataVaksinKeluarga.vaksinRT : undefined
-    console.log(dataVaksinKeluarga)
 
     useEffect(() => {
         async function getData() {
@@ -32,7 +31,6 @@ const TableDataVaksinDetail = () => {
         category: params.category || categories[1],
     };
 
-    console.log(filter)
 
     if (dataVaksinRT && dataVaksinRT.length) {
         const detailData = dataVaksinRT.filter(e => e.keluargaId === value.id)
@@ -60,7 +58,7 @@ const TableDataVaksinDetail = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {detailData.map((element, index) => {
+                                {result.map((element, index) => {
                                     return (
                                         <tr className="border-1" key={index}>
                                             <th scope="row" className=" d-none d-sm-block">{index + 1}</th>

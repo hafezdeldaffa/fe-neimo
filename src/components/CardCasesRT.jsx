@@ -60,12 +60,12 @@ const CardCaseRT = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col">
+                                <div className="col-7">
                                     <p className="card-text">{dataRT && dataRT.length ? kepalaKeluarga.length : 0} Kepala Keluarga</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataRT && dataRT.length ? ibu.length : 0} Istri</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataRT && dataRT.length ? anak.length : 0} Anak</p>
                                 </div>
-                                <div className="col">
+                                <div className="col-5">
                                     <h1 className="text-end" style={{ fontSize: '70px', marginTop: '-20px' }}>{dataRT && dataRT.length ? dataRT.length : 0}</h1>
                                 </div>
                             </div>
@@ -84,11 +84,11 @@ const CardCaseRT = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col">
+                                <div className="col-7">
                                     <p className="card-text">{dataPositifRT && dataPositifRT.length && dataRT && dataRT.length ? dataRT.length - dataPositifRT.length : 0} Berstatus Negatif</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataPositifRT && dataPositifRT.length ? positif.length : 0} Berstatus Positif</p>
                                 </div>
-                                <div className="col">
+                                <div className="col-5">
                                     <h1 className="text-end" style={{ fontSize: '70px', marginTop: '-20px' }}>{dataPositifRT && dataPositifRT.length ? positif.length : 0}</h1>
                                 </div>
                             </div>
@@ -107,12 +107,12 @@ const CardCaseRT = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col">
-                                    <p className="card-text">{dataVaksinRT && dataVaksinRT.length ? dosis1.length : 0} Orang Dosis 1</p>
+                                <div className="col-7">
+                                    <p className="card-text">{dosis1 && dosis1.length ? dosis1.length : 0} Orang Dosis 1</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataVaksinRT && dataVaksinRT.length ? dosis2.length : 0} Orang Dosis 2</p>
                                     <p className="card-text" style={{ marginTop: '-20px' }}>{dataVaksinRT && dataVaksinRT.length && dataRT && dataRT.length ? dataRT.length - dataVaksinRT.length : 0} Orang Belum Vaksin</p>
                                 </div>
-                                <div className="col">
+                                <div className="col-5">
                                     <h1 className="text-end" style={{ fontSize: '70px', marginTop: '-20px' }}>{dataVaksinRT && dataVaksinRT.length ? dosis1.length : 0}</h1>
                                 </div>
                             </div>

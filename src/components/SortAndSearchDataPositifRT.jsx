@@ -1,8 +1,6 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import Searching from './Searching';
 import SortingDataPositifRT from './SortingDataPositifRT';
-import SortingDataPositifRTDetail from './SortingDataPositifRTDetail';
 
 const SortAndSearchPositifRT = () =>{    
     return(

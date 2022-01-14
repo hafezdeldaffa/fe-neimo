@@ -8,11 +8,8 @@ import { SidebarContext } from '../context/SidebarContext';
 
 function Sidebar() {
   const location = useLocation();
-  const queryString = require('query-string')
-  const value = queryString.parse(location.pathname);
-  console.log(value)
+ 
   const role = sessionStorage.getItem('role')
-  console.log(role)
 
   const [sidebar, setSidebar] = useContext(SidebarContext);
   const showSidebar = () => setSidebar(sidebar);

@@ -10,11 +10,11 @@ const FormTambahLaporan = (props) => {
 
   const pertanyaan = {
     perjalananDomestik:
-      'Apakah Anda memiliki riwayat melakukan perjalanan domestik selama 14 hari terakhir?',
+      'Apakah Anda  melakukan perjalanan domestik selama 14 hari terakhir?',
     turisAsing:
-      'Apakah Anda meiliki riwayat perjalanan internasional atau pernah bertemu turis asing dalam 14 hari terakhir?',
+      'Apakah Anda perjalanan internasional dan bertemu turis asing dalam 14 hari terakhir?',
     kontakPositif:
-      'Apakah Anda memiliki riwayat kontak dengan orang yang dinyatakan  positif terinfeksi covid-19?',
+      'Apakah Anda memiliki riwayat kontak dengan orang yang sedang terinfeksi covid-19?',
     demam: 'Apakah saat ini Anda mengalami demam?',
     batuk: 'Apakah saat ini Anda mengalami gejala batuk?',
     nyeriTenggorokan: 'Apakah Anda merasakan nyeri di tenggorokan?',
@@ -84,22 +84,22 @@ const FormTambahLaporan = (props) => {
                 <ol>
                   <tr>
                     <td>
-                      {objectValues.map((q) => {
+                      {objectValues.map((q, i) => {
                         return (
-                          <tr>
-                            <td scope='row'>
-                              <li>{q}</li>
-                            </td>
+                          <tr key={i}>
+                            <th scope='row'>
+                              <li style={{marginBottom: '1px'}}>{q}</li>
+                            </th>
                           </tr>
                         );
                       })}
                     </td>
 
                     <td>
-                      {objectKeys.map((r) => {
+                      {objectKeys.map((r, i) => {
                         return (
-                          <tr>
-                            <td scope='row' className='px-2'>
+                          <tr key={i}>
+                            <th scope='row' className='px-2'>
                               <div className='form-check form-switch'>
                                 <input
                                   className='form-check-input'
@@ -108,7 +108,7 @@ const FormTambahLaporan = (props) => {
                                   {...register(r)}
                                 />
                               </div>
-                            </td>
+                            </th>
                           </tr>
                         );
                       })}

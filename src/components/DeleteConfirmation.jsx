@@ -11,13 +11,11 @@ const DeleteConfirmation = (props) => {
         config.headers.authorization = `Bearer ${token}`;
         return config;
       });
-      console.log(data);
       const id = data.id;
 
       const dataDelete = await axios.delete(
         `https://neimo-be.herokuapp.com/anggota-keluarga/${id}`
       );
-      console.log(dataDelete);
 
       if (dataDelete && dataDelete.status === 200) {
         window.location.href = '/data-keluarga';

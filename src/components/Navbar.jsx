@@ -71,7 +71,7 @@ const Navbar = () => {
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to={'/profile'}><MdIcons.MdOutlineAccountCircle/><span>AKUN</span></Link></li>
                 <li><Link className="dropdown-item" to={'/dashboard'}><MdIcons.MdDashboard /><span>DASHBOARD</span></Link></li>
-                <li><Link className="dropdown-item" to={'/'} onClick={handleLogout}><MdIcons.MdLogout/><span className='fw-bold'>KELUAR</span></Link></li>
+                <li><Link className="dropdown-item" to={'/?status=BerhasilLogout'} onClick={handleLogout}><MdIcons.MdLogout/><span className='fw-bold'>KELUAR</span></Link></li>
               </ul>
             </div>
           </>

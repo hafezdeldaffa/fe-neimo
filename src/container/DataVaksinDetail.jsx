@@ -3,7 +3,6 @@ import { SidebarContext } from '../context/SidebarContext';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import SortAndSearchPositifRT from '../components/SortAndSearchDataPositifRT';
 import TableDataVaksinDetail from '../components/TableDataVaksinDetail';
 import Login from './Login';
 import SortAndSearchVaksinRTDetail from '../components/SortAndSearchDataVaksinRTDetail';

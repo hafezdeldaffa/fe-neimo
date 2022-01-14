@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const SortingDataLaporanRT = () => {
-  let {pathname} = useLocation();
   let location = useLocation()
 
   const loc = location.search.split('?');

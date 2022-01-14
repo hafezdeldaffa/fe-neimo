@@ -36,7 +36,6 @@ const DataKeluargaTable = () => {
       const getVaksin = await axios.get(
         `https://neimo-be.herokuapp.com/vaksin/${id}`
       );
-      console.log(getVaksin);
       setDataVaksin(getVaksin);
     } catch (err) {
       if (err.response.status === 404) {

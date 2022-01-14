@@ -1,5 +1,4 @@
 const CardCaseGlobal = ({ positif, meninggal, sembuh }) => {
-  console.log(sembuh);
   return (
     <div className='card mb-3 mx-auto mt-5' style={{ maxWidth: '700px' }}>
       <div className='row g-0'>

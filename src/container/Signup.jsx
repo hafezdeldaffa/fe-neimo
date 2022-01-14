@@ -2,21 +2,36 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import GagalDaftarModal from '../components/GagalDaftarModal';
 
 const Signup = () => {
   const { register, handleSubmit } = useForm();
   const [show, setShow] = useState(false)
 
+  const location = useLocation()
+  const loc = location.search.split('?')
+  const qs = require('qs');
+  const obj = qs.parse(loc[1]);
+
+  const [showModal, setShowModal] = useState(false);
+
   const onSubmit = async (data) => {
-    const signup = await axios.post(
-      'https://neimo-be.herokuapp.com/auth/signup',
-      data
-    );
-    if (signup) {
-      window.location.href = '/login';
-    } else {
-      alert('Gagal untuk signup!');
+    try {
+      const signup = await axios.post(
+        'https://neimo-be.herokuapp.com/auth/signup',
+        data
+      );
+      if (signup) {
+        window.location.href = '/login?status=berhasilMendaftar';
+      } else {
+        alert('Gagal untuk signup!');
+      }
+    } catch (error) {
+      if(error.response.status === 422){
+        window.location.href = '/signup?status=gagalMendaftar';
+      }
+      throw error;
     }
   };
 
@@ -30,7 +45,7 @@ const Signup = () => {
               Daftarkan Keluarga Anda!
             </h1>
             <p className='lh-2' style={{ fontSize: '20px' }}>
-              Daftar sekarang dan hubungi ketua RT Anda untuk validasi untuk
+              Daftar sekarang dan Hubungi ketua RT Anda dan dapatkan Token RT untuk
               dapat menggunakan aplikasi Neimo.
             </p>
           </div>
@@ -176,6 +191,13 @@ const Signup = () => {
             </p>
           </div>
         </div>
+        {obj.status && obj.status === 'gagalMendaftar'?
+         
+         <GagalDaftarModal
+          show={() => setShowModal(true) }
+          data={showModal}
+        />
+         : null}
       </div>
     </React.Fragment>
   );

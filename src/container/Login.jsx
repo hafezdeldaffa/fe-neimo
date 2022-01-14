@@ -1,7 +1,45 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
+    console.log('inie');
+    console.log(e);
+    try {
+      console.log(' ini data');
+      console.log(data);
+      const login = await axios.post(
+        'https://neimo-be.herokuapp.com/auth/login',
+        data
+      );
+      console.log(' ini login');
+      console.log(login);
+      sessionStorage.setItem('token', login.data.token);
+      sessionStorage.setItem('role', data.role);
+
+      const role = sessionStorage.getItem('role');
+      const token = sessionStorage.getItem('token');
+
+      if (role.length && token.length) {
+        window.location.href = '/dashboard';
+        // window.alert('Berhasil Login')
+      } else {
+        window.location.href = '/login';
+        // window.alert('gagal melakukan Login')
+      }
+
+      console.log(role);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <React.Fragment>
       <Navbar />
@@ -19,7 +57,7 @@ const Login = () => {
             <h6 className='display-6 fw-bold lh-1 mb-4'>
               Login Untuk Melanjutkan
             </h6>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)} method='post'>
               <div className='mb-3'>
                 <input
                   placeholder='Email'
@@ -27,6 +65,7 @@ const Login = () => {
                   className='form-control'
                   id='exampleInputEmail1'
                   aria-describedby='emailHelp'
+                  {...register('email', { required: true })}
                 />
               </div>
               <div className='mb-3'>
@@ -35,18 +74,20 @@ const Login = () => {
                   type='password'
                   className='form-control'
                   id='exampleInputPassword1'
+                  autoComplete='on'
+                  {...register('password', { required: true })}
                 />
               </div>
-              <div className='mb-3 form-check'>
-                <input
-                  type='checkbox'
-                  className='form-check-input'
-                  id='exampleCheck1'
-                />
-                <label className='form-check-label' for='exampleCheck1'>
-                  Check me out
-                </label>
-              </div>
+              <select
+                className='form-select mb-3'
+                aria-label='Default select example'
+                placeholder='Role Anda'
+                defaultValue={'Keluarga'}
+                {...register('role', { required: true })}
+              >
+                <option value='Keluarga'>Role : Keluarga</option>
+                <option value='RT'>Role : RT</option>
+              </select>
               <button
                 type='submit'
                 className='btn btn-primary'
@@ -55,6 +96,15 @@ const Login = () => {
                 Masuk
               </button>
             </form>
+            <p className='text-center mt-3 text-secondary'>
+              Belum memiliki akun?
+              <Link
+                to={'/signup'}
+                className='text-dark fw-bold text-decoration-none'
+              >
+                Daftar
+              </Link>
+            </p>
           </div>
         </div>
       </div>

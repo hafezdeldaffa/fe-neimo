@@ -28,7 +28,7 @@ const CountriesDataTable = () => {
 
     return (
         <div className="container">
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <div className="table-wrapper-scroll-y my-custom-scrollbar">
             <div className="table-responsive">
             <table className="table table-borderless table-hover shadow">
                 <thead className="bg-table text-white">
@@ -44,7 +44,7 @@ const CountriesDataTable = () => {
                     {
                         filtered.map((element, index) => {
                            return(
-                            <tr className="border-1">
+                            <tr className="border-1" key={index}>
                                 <th scope="row" className=" d-none d-sm-block">{index+1}</th>
                                 <td>{element.attributes.Country_Region}</td>
                                 <td>{element.attributes.Confirmed}</td>

@@ -29,14 +29,12 @@
   font-family: 'Roboto';
 }
 
-
 .serviceInfo-bg {
   min-height: 300px;
   width: 100%;
   background: #2647bd;
   padding: 4rem 0rem;
 }
-
 
 .serviceInfo-h4 {
   font-family: 'Poppins';
@@ -45,7 +43,7 @@
 }
 
 .serviceInfo-btn {
-  background-color: #38A3A5 !important;
+  background-color: #38a3a5 !important;
   color: white !important;
   border-radius: 15px !important;
 }
@@ -58,31 +56,31 @@
   background: #2647bd;
 }
 
-.search-box{
+.search-box {
   padding: 0.3em;
   border-style: solid;
-  border-color: #38A3A5;
+  border-color: #38a3a5;
   border-radius: 30px;
 }
 .search-input {
-  border-width:0px;
-  border:none;
-  border-width:0px;
-  border:none;
+  border-width: 0px;
+  border: none;
+  border-width: 0px;
+  border: none;
   outline: none;
   width: 60%;
 }
 
-.btn-icon{
+.btn-icon {
   width: 30px;
 }
 
-.sort-img{
-  width:40px;
+.sort-img {
+  width: 40px;
 }
 
-.btn-sort{
-  background-color: #F16133 !important;
+.btn-sort {
+  background-color: #f16133 !important;
   color: white !important;
   border-radius: 15px !important;
 }
@@ -91,31 +89,29 @@
   background: #2647bd !important;
 }
 
-.text-coral{
+.text-coral {
   color: coral !important;
 }
 
-.btn-masuk{
+.btn-masuk {
   background: white;
-  border-radius: 50px;
+  border-radius: 30px;
   color: #2647bd;
 }
 
 .my-custom-scrollbar {
   position: relative;
-  height: 500px;
+  max-height: 500px;
   overflow: auto;
-  }
-  .table-wrapper-scroll-y {
+}
+.table-wrapper-scroll-y {
   display: block;
-  }
-
-
-  .theader{
-    position:sticky;
-    top: 0 ;
 }
 
+.theader {
+  position: sticky;
+  top: 0;
+}
 
 .IndonesiaCases-bg {
   min-height: 300px;
@@ -124,18 +120,51 @@
   padding: 4rem 0rem;
 }
 
-.bg-positif{
-  background: #E8C926 !important;
+.bg-positif {
+  background: #e8c926 !important;
 }
 
-.bg-negative{
+.bg-negative {
   background: orange !important;
 }
 
-.bg-recovered{
-  background: #38A3A5 !important;
+.bg-recovered {
+  background: #38a3a5 !important;
 }
 
-.bg-vacinated{
-  background: #D57CFF !important;
+.bg-vacinated {
+  background: #d57cff !important;
+}
+
+.bg-grey {
+  background: #545454 !important;
+}
+
+.addAnggota-btn {
+  background-color: #38a3a5 !important;
+  color: white !important;
+  border-radius: 15px !important;
+}
+
+.addAnggota2-btn {
+  background-color: #38a3a5 !important;
+  color: white !important;
+}
+
+.btn-delete {
+  background-color: #f16133 !important;
+  color: white !important;
+}
+
+.btn-delete:hover {
+  background-color: #d4471a !important;
+}
+
+
+.bg-serviceCard{
+  background-color: #545454 !important;
+}
+
+.bg-serviceCard:hover{
+  background-color: #F16133 !important;
 }

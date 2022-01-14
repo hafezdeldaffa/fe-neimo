@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import * as AiIcons from 'react-icons/ai';
-import { getAxios, KeluargaContext } from '../context/DataKeluargaContext';
-import { getAxiosLaporan, LaporanContext } from '../context/DataLaporanContext';
-import DeleteLaporan from './DeleteLaporan';
+import React, { useContext, useEffect, useState } from "react"
+import * as AiIcons from 'react-icons/ai'
+import { getAxios, KeluargaContext } from "../context/DataKeluargaContext"
+import { getAxiosLaporan, LaporanContext } from "../context/DataLaporanContext"
+import DeleteLaporan from "./DeleteLaporan"
+import Loading from "./Loading"
 const TableRiwayatLaporan = () => {
   const [showDelete, setShowDelete] = useState(false);
 
@@ -59,7 +60,7 @@ const TableRiwayatLaporan = () => {
                 {riwayaLaporan.map((element, index) => {
                   return (
                     <tr className='border-1' key={index}>
-                      {dataAnggota.map((e, index) => {
+                      {dataAnggota.map((e, i) => {
                         return element.anggotaId === e._id ? (
                           <>
                             <th scope='row' className=' d-none d-sm-block'>
@@ -92,7 +93,10 @@ const TableRiwayatLaporan = () => {
       </div>
     );
   } else {
-    return null;
+    return(
+        riwayaLaporan === undefined && dataAnggota === undefined ? <Loading /> :
+    <p className="ms-4">Belum Ada Laporan Masuk</p>
+    )
   }
 };
 export default TableRiwayatLaporan;

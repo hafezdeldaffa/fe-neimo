@@ -14,7 +14,6 @@ export const getAxiosVaksin = async () => {
     const result = await axios.get('https://neimo-be.herokuapp.com/vaksin');
     return result.data;
   } catch (err) {
-    console.log(err.response.status);
     if (err.response.status === 404) {
       return 'kosong';
     } else if (err.response.status === 403) {

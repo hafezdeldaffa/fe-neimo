@@ -8,6 +8,9 @@ import { SidebarContext } from '../context/SidebarContext';
 
 function Sidebar() {
   const location = useLocation();
+ 
+  const role = sessionStorage.getItem('role')
+
   const [sidebar, setSidebar] = useContext(SidebarContext);
   const showSidebar = () => setSidebar(sidebar);
 
@@ -19,20 +22,23 @@ function Sidebar() {
             {routes.map((item, index) => {
               return (
                 index > 4 ?
-                  <li key={index} className={item.cName} value={index}>
-                    <Link to={item.path}>
-                      {item.icon}
-                      <span
-                        className={
-                          location.pathname === item.path
-                            ? 'fw-bold'
-                            : 'fw-normal'
-                        }
-                      >
-                        {item.title}
-                      </span>
-                    </Link>
-                  </li>
+                  role === 'Keluarga' && item.path === '/data-laporan' ?
+                    null
+                    :
+                    <li key={index} className={item.cName} value={index}>
+                      <Link to={item.path}>
+                        {item.icon}
+                        <span
+                          className={
+                            location.pathname === item.path
+                              ? 'fw-bold'
+                              : 'fw-normal'
+                          }
+                        >
+                          {item.title}
+                        </span>
+                      </Link>
+                    </li>
                   : null
               );
             })}

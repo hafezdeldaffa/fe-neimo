@@ -1,13 +1,13 @@
 import React from 'react';
 import Searching from './Searching';
-import SortingDataPositifRT from './SortingDataPositifRT';
+import SortingDataPositifRTDetail from './SortingDataPositifRTDetail';
 
-const SortAndSearchPositifRT = () =>{    
+const SortAndSearchPositifRTDetail = () =>{
     return(
       <div className="container mt-4">
       <div className="row">
         <div className="col-2 col-md-6">
-           < SortingDataPositifRT />
+           < SortingDataPositifRTDetail />
         </div>
         <div className="col-10 col-md-6">
             <Searching />
@@ -17,4 +17,4 @@ const SortAndSearchPositifRT = () =>{
     )
 }
 
-export default SortAndSearchPositifRT;
+export default SortAndSearchPositifRTDetail;

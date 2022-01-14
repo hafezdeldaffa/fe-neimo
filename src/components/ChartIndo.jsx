@@ -41,22 +41,22 @@ const ChartIndo = (props) => {
     { quarter: 7, earnings: chartData2[6] },
   ];
   return (
-    <div className='container'>
+    <div className='container mt-3'>
       <div className='card shadow border-0'>
-        <div className='d-flex justify-content-start ms-4 mt-4'>
+        <div className='d-flex justify-content-start align-items-center ms-4 mt-4'>
           <img
             className='rounded'
             src='/images/analytics.png'
             alt='People'
             style={{ width: '36px' }}
           />
-          <h4 className='ms-2'>Grafik Covid 7 Hari Terakhir</h4>
+          <h5 className='ms-2'>Grafik Informasi Covid 7 Hari Terakhir di Indonesia</h5>
         </div>
         <VictoryChart
           // adding the material theme provided with Victory
-          padding={{ top: 5, bottom: 25, left: 60, right: 60 }}
+          padding={{ top: 5, bottom: 20, left: 60, right: 60 }}
           width={400}
-          height={90}
+          height={60}
           theme={VictoryTheme.material}
           domainPadding={{ x: 20, y: 10 }}
         >
@@ -64,14 +64,15 @@ const ChartIndo = (props) => {
             height={100}
             tickValues={[1, 2, 3, 4, 5, 6, 7]}
             tickFormat={date}
+            
             style={{
-              tickLabels: { fontSize: 5 },
+              tickLabels: { fontSize: 5},
             }}
           />
           <VictoryAxis
             style={{ tickLabels: { fontSize: 5 } }}
             dependentAxis
-            tickValues={[200, 400, 600, 800, 1000, 1200, 1400]}
+            tickValues={[200, 400, 600, 800, 1000]}
             tickFormat={(t) => `${Math.round(t)}`}
           />
           <VictoryGroup offset={12} colorScale={'qualitative'}>

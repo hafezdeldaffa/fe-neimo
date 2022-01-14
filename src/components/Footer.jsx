@@ -9,8 +9,7 @@ const Footer = () => {
           <div className='col-md-4 mx-auto'>
             <h5 className='font-weight-bold text-uppercase mt-3 mb-4'>Neimo</h5>
             <p>
-              Neimo adalah aplikasi pemantauan keadaan COVID-19 di keluarga
-              Anda.
+              Neimo adalah aplikasi pelaporan dan pemantauan keadaan COVID-19 di lingkungan dan keluarga Anda.
             </p>
           </div>
           <hr className='clearfix w-100 d-md-none'></hr>

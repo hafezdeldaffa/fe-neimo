@@ -19,71 +19,69 @@ const DetailLaporan = (props) => {
 
     const dataLaporan = props.dataLaporan
     const dataAnggota = props.dataAnggota
+
     return (
         <>
             <Modal show={props.show} onHide={props.onHide} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Tambahkan Laporan</Modal.Title>
+                    <Modal.Title>Detail Laporan</Modal.Title>
                 </Modal.Header>
                 <form>
                     <Modal.Body>
                         <h6 className="ms-3">Nama : {dataAnggota.nama} </h6>
-                        <div className="d-flex justify-content-start ms-3">
-                            <h6>Tanggal Pelaporan : {dataLaporan.createdAt.substr(0, 10)}</h6>
-                        </div>
                         <table className="ms-3">
                             <tbody>
                                 <tr>
                                     <td>{pertanyaan[0]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.perjalananDomestik}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.perjalananDomestik === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[1]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.turisAsing}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.turisAsing === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[2]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.kontakPositif}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.kontakPositif === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[3]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.demam}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.demam === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[4]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.batuk}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.batuk === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[5]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.nyeriTenggorokan}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.nyeriTenggorokan === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[6]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.sesakNafas}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.sesakNafas === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[7]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.batukPilek}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.batukPilek === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[8]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.diabetes}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.diabetes === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[9]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.hipertensi}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.hipertensi === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[10]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.jantung}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.jantung === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[11]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.ginjal}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.ginjal === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                                 <tr>
                                     <td>{pertanyaan[12]}</td>
-                                    <td className="px-2 fw-bold">{dataLaporan.asma}</td>
+                                    <td className="px-2 fw-bold text-center">{dataLaporan.asma === 'true' ? 'Ya' : 'Tidak'}</td>
                                 </tr>
                             </tbody>
                         </table>

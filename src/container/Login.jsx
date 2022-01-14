@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
+import GagalLoginModal from '../components/GagalLoginModal';
+import BerhasilDaftarModal from '../components/BerhasilDaftarModal';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (data, e) => {
-    e.preventDefault();
-    console.log('inie');
-    console.log(e);
+  const location = useLocation()
+  const loc = location.search.split('?')
+  const qs = require('qs');
+  const obj = qs.parse(loc[1]);
+
+  const [showModal, setShowModal] = useState(false);
+  const [showModalBerhasil, setShowModalBerhasil] = useState(false);
+
+  const onSubmit = async (data,e) => {
+    e.preventDefault()
     try {
-      console.log(' ini data');
-      console.log(data);
       const login = await axios.post(
         'https://neimo-be.herokuapp.com/auth/login',
         data
       );
-      console.log(' ini login');
-      console.log(login);
+
       sessionStorage.setItem('token', login.data.token);
       sessionStorage.setItem('role', data.role);
 
@@ -34,8 +39,10 @@ const Login = () => {
         // window.alert('gagal melakukan Login')
       }
 
-      console.log(role);
     } catch (error) {
+      if(error.response.status === 401){
+        window.location.href = '/login?status=gagalLogin';
+      }
       throw error;
     }
   };
@@ -107,6 +114,22 @@ const Login = () => {
             </p>
           </div>
         </div>
+        {obj.status && obj.status === 'gagalLogin'?
+         
+         <GagalLoginModal
+          show={() => setShowModal(true) }
+          data={showModal}
+        />
+         : null}
+
+         {
+           obj.status && obj.status === 'berhasilMendaftar' ?
+           <BerhasilDaftarModal
+           show={() => setShowModalBerhasil(true) }
+           data={showModalBerhasil}
+         />
+          : null}
+        
       </div>
     </React.Fragment>
   );

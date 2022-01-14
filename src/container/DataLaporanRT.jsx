@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { SidebarContext } from '../context/SidebarContext';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import SortAndSearchPositifRT from '../components/SortAndSearchDataPositifRT';
 import TableLaporanWarga from '../components/TableLaporanWarga';
 import Login from './Login';
+import SortAndSearchLaporanRT from '../components/SortAndSearchDataLaporanRT';
+import TableLaporanWargaTerbaru from '../components/TableLaporanWargaTerbaru';
+
 const DataLaporanRT = () => {
   const [sidebar] = useContext(SidebarContext);
   const token = sessionStorage.getItem('token');
@@ -33,8 +35,12 @@ const DataLaporanRT = () => {
                 </h2>
               </div>
             </div>
-            <SortAndSearchPositifRT></SortAndSearchPositifRT>
+            <SortAndSearchLaporanRT />
             <TableLaporanWarga />
+            <div className='container mt-4'>
+              <h3>Laporan Terbaru</h3>
+            </div>
+            <TableLaporanWargaTerbaru />
           </div>
         </div>
       </div>

@@ -13,8 +13,6 @@ const IndonesiaData = () => {
   const [ProvCases] = useContext(ProvinceContext);
   const [DailyCases] = useContext(IndonesiaDailyContext);
 
-  console.log(cases);
-
   return (
     <React.Fragment>
       <div className='bg-light'>

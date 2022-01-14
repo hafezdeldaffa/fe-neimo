@@ -13,10 +13,8 @@ export const getAxiosPositif = async () => {
 
   try {
     const result = await axios.get('https://neimo-be.herokuapp.com/dataPositif');
-    console.log(result.data)
     return result.data
   } catch (err) {
-    console.log(err.response.status)
     if (err.response.status === 404) {
       return "kosong"
     } else if(err.response.status === 403) {

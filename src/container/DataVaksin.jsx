@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { SidebarContext } from '../context/SidebarContext';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import SortAndSearchPositifRT from '../components/SortAndSearchDataPositifRT';
 import TableDataVaksinRT from '../components/TableDataVaksinRT';
 import Login from './Login';
+import SortAndSearchVaksinRT from '../components/SortAndSearchDataVaksinRT';
 const DataVaksin = () => {
   const [sidebar] = useContext(SidebarContext);
 
@@ -35,7 +35,7 @@ const DataVaksin = () => {
                 </h2>
               </div>
             </div>
-            <SortAndSearchPositifRT />
+            <SortAndSearchVaksinRT/>
             <TableDataVaksinRT />
           </div>
         </div>

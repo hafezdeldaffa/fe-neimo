@@ -1,19 +1,12 @@
-import React, {useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as FiIcons from "react-icons/fi"
-import { useLocation } from "react-router-dom";
 import { getAxios, KeluargaContext } from "../context/DataKeluargaContext";
 import { getAxiosLaporan, LaporanContext } from "../context/DataLaporanContext";
 import DetailLaporan from "./DetailLaporan";
 import Loading from "./Loading";
 
-const TableLaporanWargaDetail = () => {
+const TableLaporanWargaTerbaru = () => {
     const [modalOpen, setModalOpen] = useState(false);
-
-    let location = useLocation();
-
-    const loc = location.search.split('?');
-    const qs = require('qs');
-    const obj = qs.parse(loc[1]);
 
     const [dataLaporan, setDataLaporan] = useContext(LaporanContext)
     const dataLaporanRT = dataLaporan ? dataLaporan.LaporanRT : undefined
@@ -48,10 +41,9 @@ const TableLaporanWargaDetail = () => {
     }, [setDataKeluarga])
 
     if (dataLaporanRT && dataLaporanRT.length && dataAnggota && dataAnggota.length) {
-        const detailLaporan = dataLaporanRT.filter(e => e.keluargaId === obj.id)
-        const result = detailLaporan.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1)
+        const detailLaporan = dataLaporanRT.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1)
         return (
-            <div className="container mt-5">
+            <div className="container mt-4">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
                     <div className="table-responsive">
                         <table className="table table-borderless table-hover shadow text-center">
@@ -65,7 +57,7 @@ const TableLaporanWargaDetail = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {result.map((element, index) => {
+                                {detailLaporan.map((element, index) => {
                                     return (
                                         <tr className="border-1" key={index}>
                                             {dataAnggota.map((e, i) => {
@@ -90,7 +82,6 @@ const TableLaporanWargaDetail = () => {
                         </table>
                     </div>
                 </div>
-
                 <DetailLaporan
                     show={modalOpen}
                     dataLaporan={laporanById}
@@ -101,8 +92,9 @@ const TableLaporanWargaDetail = () => {
         )
     } else {
         return (
-            <Loading />
+            dataLaporanRT === undefined && dataAnggota === undefined ? <Loading /> :
+                <p className="ms-4">Belum Ada Laporan Masuk</p>
         )
     }
 }
-export default TableLaporanWargaDetail
+export default TableLaporanWargaTerbaru

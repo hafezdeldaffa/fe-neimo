@@ -74,7 +74,7 @@ const FormEditAnggota = (props) => {
                   id='name'
                   aria-describedby='name'
                   placeholder='Nama Lengkap'
-                  value={data.nama}
+                  defaultValue={data.nama}
                   {...register('nama')}
                 />
                 {/* INPUT ROLE */}

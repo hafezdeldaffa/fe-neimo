@@ -38,7 +38,7 @@ const CardCaseRT = () => {
 
 
     const kepalaKeluarga = dataRT && dataRT.length ? dataRT.filter(e => e.role === "Kepala Keluarga") : undefined
-    const ibu = dataRT && dataRT.length ? dataRT.filter(e => e.role === "Ibu") : undefined
+    const ibu = dataRT && dataRT.length ? dataRT.filter(e => e.role === "Istri") : undefined
     const anak = dataRT && dataRT.length ? dataRT.filter(e => e.role === "Anak") : undefined
 
     const positif = dataPositifRT && dataPositifRT.length ? dataPositifRT : undefined
